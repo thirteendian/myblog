@@ -11,7 +11,7 @@ const Index = ({children, home}) => {
                     name = "Yuxuan Yang blog"
                     content="Blogs about algorithm, web, and software design"
                 />
-                <title>Yuxuan's Blog</title>
+                <title>Yuxuan Blog</title>
             </Head>
             <header>
                 <>
