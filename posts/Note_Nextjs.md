@@ -1,17 +1,15 @@
----
-title: Note about Next.js
-date: '2022-09-08'
----
+
 # Table of Contents
 
-1.  [Create React App](#org4dd43f1)
-2.  [Why Next.js](#org6be6926)
-    1.  [The usage of `Next.js` elements](#orgf0adf1f)
-    2.  [The usage of `meta`](#org2284765)
+1.  [Create React App](#org5f3b0ee)
+2.  [Why Next.js](#org5b1243b)
+3.  [The usage of `Next.js` elements](#org87fbf00)
+4.  [The code bundling and splitting](#org000bb1a)
+5.  [The API Routes](#org56d444c)
 
 
 
-<a id="org4dd43f1"></a>
+<a id="org5f3b0ee"></a>
 
 # Create React App
 
@@ -33,7 +31,7 @@ And the develop mode change from `npm start` to `npm run dev`.
 All packages that have been installed in this project can be checked in `package.json` under `dependencies`.
 
 
-<a id="org6be6926"></a>
+<a id="org5b1243b"></a>
 
 # Why Next.js
 
@@ -60,16 +58,19 @@ and pass it to page rendering function that need those props
     export default function Page(props){...}
 
 
-<a id="orgf0adf1f"></a>
+<a id="org87fbf00"></a>
 
-## The usage of `Next.js` elements
+# The usage of `Next.js` elements
 
 Most of the replacements of original React elements such like `next/link`, `next/head` or `next/image`,
 using next's logic to optimize the web page.
 
-For example, `next/link` will do automatic splitting and prefetching,
+For example, `next/link` will create `<a>` tag and do automatic splitting and prefetching,
 by loading the home page but not the others to speed up,
 but prefetching the link pages' content for browser.
+Another routing way is to use `useRouter.push()` within a button,
+next won't create `<a>` tag in the programming,
+thus it won't be detected by SEO crawlers. If Single Page is used, one should use `<Link>`.
 
 Also, always wrap the main page with a `layout` component basically return it's children
 
@@ -86,7 +87,65 @@ if any css file need to be used as global style,
 they should be included in this file
 
 
-<a id="org2284765"></a>
+<a id="org000bb1a"></a>
 
-## The usage of `meta`
+# The code bundling and splitting
 
+The traditional way is writing all script code into one JS file.
+The module system was introduced since ES6 with `import` and `export`,
+allowed us to seperate js into more maintainable different sets of files.
+When App is built, the modules are bundled into minimum numbers of files by tools(Webpack etc.),
+to reduce the loading time, which is called *Code Splitting*.
+After Code Splitting, each page only load the required bundled files <sup><a id="fnr.1" class="footref" href="#fn.1" role="doc-backlink">1</a></sup>.
+Next.js constantly improve the code-splitting strategy.
+
+For example, obviouslym the file system package `"fs.js"` which is normally hold on Node server side will be ignored at front-end,
+thus an error: `The Module not found: Can't resolve 'fs'.` will show in browser.
+In this case,
+Next.js provide *Tree Shaking* to eliminates the dead code,
+but it requires all server side code should **only** be used in function file `getStaticProps` or `getServerSideProps`.
+
+Here should pay attention, unused code will not participate tree shaking for server-side code,
+thus if one imported an unused function contains packages such like `fs.js`,
+the error will still show up.
+Also, the recursive function will be eliminate correctly,
+<sup><a id="fnr.2" class="footref" href="#fn.2" role="doc-backlink">2</a></sup>
+so the following code can be added to the next.config.js:
+
+      module.exports = {
+      webpack: (config, { isServer }) => {
+        // Fixes npm packages that depend on `fs` module
+        if (!isServer) {
+          config.node = {
+            fs: 'empty'
+          }
+        }
+    
+        return config
+      }
+    }
+
+
+<a id="org56d444c"></a>
+
+# The API Routes
+
+Must be written in `pages/api` folder, and will not be treated as normal page components.
+
+Must `export default` and must have two parameters:
+
+    export default function handler(req,res){...}
+
+For example, as blogger, this endpoint can be used as *repository* to communicate with database:
+
+    export default function handler(req,res){
+        const data = req.body.data;
+        //here write corresponding repository method to database
+    }
+
+
+# Footnotes
+
+<sup><a id="fn.1" href="#fnr.1">1</a></sup> In next.js, it is called *chunks*
+
+<sup><a id="fn.2" href="#fnr.2">2</a></sup> Described in [Maikelveen's blog: How To Solve Module Not Found Can’t Resolve ‘fs’ in Next.js](https://maikelveen.com/blog/how-to-solve-module-not-found-cant-resolve-fs-in-nextjs)

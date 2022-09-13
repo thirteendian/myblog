@@ -1,22 +1,19 @@
----
-title: Note about Emacs Org-mode
-date: '2022-09-05'
----
 
 # Table of Contents
 
-1.  [Title](#org6b6bf22)
-2.  [Rich Text](#org924b17d)
-3.  [Code Block](#org83a4e74)
-    1.  [Init Setup](#org8b43609)
-    2.  [Block Input](#org252e4b1)
-    3.  [Latex setup](#orga2f667c)
-4.  [Export](#org6d79c98)
-5.  [Draw Ditaa image](#orgc5ce1f0)
+1.  [Title](#org521f0ff)
+2.  [Rich Text](#org00c3a68)
+3.  [Code Block](#orgeeca574)
+    1.  [Init Setup](#org3a0cb0f)
+    2.  [Block Input](#orge742653)
+    3.  [Latex setup](#org6fde9fb)
+4.  [Citation](#org8e0ed64)
+5.  [Export](#org8cf2961)
+6.  [Draw Ditaa image](#orgd73d59b)
 
 
 
-<a id="org6b6bf22"></a>
+<a id="org521f0ff"></a>
 
 # Title
 
@@ -40,7 +37,7 @@ Previous save level title `C-c C-b`;(back)
 Parent level `C-c C-u`;
 
 
-<a id="org924b17d"></a>
+<a id="org00c3a68"></a>
 
 # Rich Text
 
@@ -49,12 +46,12 @@ Like markdown '`**`' is for **bold**; '`/italic/`' is for *italic*; '`_underline
 The footnote is marked as `[fn::<body>]` or seperate line `[fn:A1] [fn:A1]<body> [newline] [newline]`<sup><a id="fnr.3" class="footref" href="#fn.3" role="doc-backlink">3</a></sup>;
 
 
-<a id="org83a4e74"></a>
+<a id="orgeeca574"></a>
 
 # Code Block
 
 
-<a id="org8b43609"></a>
+<a id="org3a0cb0f"></a>
 
 ## Init Setup
 
@@ -92,7 +89,7 @@ Press `<RET>` on the checkbox of supported export languages to enable/disable it
 Now in export menu we can find mark down support.
 
 
-<a id="org252e4b1"></a>
+<a id="orge742653"></a>
 
 ## Block Input
 
@@ -127,7 +124,7 @@ Example of Java:
 For inline code `~code~` is for `code`;
 
 
-<a id="orga2f667c"></a>
+<a id="org6fde9fb"></a>
 
 ## Latex setup
 
@@ -166,7 +163,19 @@ For changing mint Pygments font color style
     #+latex_header: \usemintedstyle{dracula}
 
 
-<a id="org6d79c98"></a>
+<a id="org8e0ed64"></a>
+
+# Citation
+
+For bib file of citation, one should include the file using expression:
+
+    #+bibliography: "<filepath>.bib"
+    #+bibliography: <filename>.bib
+
+The bib file can be edited by `C-c C-x @`
+
+
+<a id="org8cf2961"></a>
 
 # Export
 
@@ -181,7 +190,7 @@ o for export tex + pdf and open
 &#x2026;
 
 
-<a id="orgc5ce1f0"></a>
+<a id="orgd73d59b"></a>
 
 # Draw Ditaa image
 
@@ -198,7 +207,7 @@ and set the :
     ;;Find ditaa,jar and set environment
     (setq org-ditaa-jar-path "<PATH OF DITAA.JAR>")
 
-![img](figure/cycle1.png)
+![img](Note_Org_Mode_figure/cycle1.png)
 
 ![img](figure/cycle2.png)
 
