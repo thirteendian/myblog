@@ -17,7 +17,7 @@ export default function Home({allPostsData}) {
         <Layout home>
             <Head>
                 <title>
-                    Yuxuan's blog
+                    Yuxuan blog
                 </title>
             </Head>
             <section>
