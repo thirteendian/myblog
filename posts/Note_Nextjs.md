@@ -1,6 +1,7 @@
 ---
 title: Note about Next.js
 date: '2022-09-08'
+label: next
 ---
 # Table of Contents
 

@@ -1,6 +1,7 @@
 ---
 title: Note about Emacs Org-mode
 date: '2022-09-05'
+label: emacs
 ---
 
 # Table of Contents

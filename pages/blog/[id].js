@@ -1,5 +1,5 @@
-import Layout from '../components/Layouts';
-import {getAllPostIds, getPostData} from '../lib/posts';
+import Layout from '../../components/Layouts';
+import {getAllPostIds, getPostData} from '../../lib/posts';
 
 export async function getStaticPaths() {
     const paths = getAllPostIds();
@@ -20,7 +20,7 @@ export async function getStaticProps({params}){
 
 
 
-
+//
 export default function Post({postData}) {
     return <Layout>
         {postData.title}
