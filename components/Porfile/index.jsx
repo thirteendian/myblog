@@ -1,10 +1,10 @@
 import React from 'react';
 import Image from 'next/image';
-const Index = () => {
+const Index = (props) => {
     return (
         <div>
             <Image src={"/Profile.jpg"}//Note that default folder is public
-                   height={144} width={108}//3:4 ratio
+                   height={props.height} width={props.width}//3:4 ratio
             />
         </div>
     );

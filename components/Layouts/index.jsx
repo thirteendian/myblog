@@ -2,13 +2,28 @@ import React from 'react';
 import Head from "next/head";
 import Profile from '../Porfile';
 import Link from "next/link";
+import styled from "styled-components";
+
+const LayoutContainer = styled.div`
+  height: 100%;
+`
+
+const BackToBlog = styled.div`
+  position: sticky;
+  position: -webkit-sticky;
+  float: top;
+  
+  width: 100%;
+  background-color: #00BB33;
+  
+`
 const Index = ({children, home}) => {
     return (
-        <div>
+        <LayoutContainer>
             <Head>
                 {/*<link rel="icon" href="/favicon.ico"/>*/}
                 <meta
-                    name = "Yuxuan Yang blog"
+                    name="Yuxuan Yang blog"
                     content="Blogs about algorithm, web, and software design"
                 />
                 <title>Yuxuan Blog</title>
@@ -16,22 +31,22 @@ const Index = ({children, home}) => {
             <header>
                 <>
                     {
-                        home?(
-                            <>
-                                <Profile/>
-                                <h1>Yuxuan Yang</h1>
-                            </>
-                        ):
+                        home ? (
+                                <>
+                                    <Profile height={144} width={108}/>
+                                    <h1>Yuxuan Yang</h1>
+                                </>
+                            ) :
                             (
-                            <>
-                                <Link href="/">Back to Home</Link>
-                            </>
+                                <BackToBlog>
+                                    <Link href="/blog">Back to Home</Link>
+                                </BackToBlog>
                             )
                     }
                 </>
             </header>
             {children}
-        </div>
+        </LayoutContainer>
     );
 };
 

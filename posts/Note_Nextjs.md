@@ -1,7 +1,7 @@
 ---
 title: Note about Next.js
 date: '2022-09-08'
-label: next
+label: js/react/next
 ---
 # Table of Contents
 

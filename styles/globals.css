@@ -1,9 +1,23 @@
+
+@font-face {
+    font-family: "wyld";
+    src:url("font/LibreCaslonDisplay-Regular.ttf");
+    font-style: normal;
+}
+/*@font-face {*/
+/*    font-family: "wyld";*/
+/*    src: url("font/wyldi.TTF");*/
+/*    font-style: italic;*/
+/*}*/
+
 html,
 body {
     padding: 0;
     margin: 0;
-    font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+    background-color: #111111;
+    font-family: wyld;
+    /*,wyld,-apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,*/
+    /*Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;*/
 }
 
 a {
@@ -15,20 +29,45 @@ a {
     box-sizing: border-box;
 }
 
-@media (prefers-color-scheme: dark) {
-    html {
-        color-scheme: dark;
-    }
-
-    body {
-        color: white;
-        background: black;
-    }
+p{
+    font-size:x-large;
+    font-feature-settings: inherit;
+    font-variant-ligatures: common-ligatures discretionary-ligatures contextual;
 }
 
+/*nav {*/
+/*    position: sticky;*/
+/*    position: -webkit-sticky; !* For Safari *!*/
+/*    top: 24px; !* How far down the page you want your ToC to live *!*/
+
+/*    !* Give table of contents a scrollbar *!*/
+/*    max-height: calc(100vh - 40px);*/
+/*    overflow: auto;*/
+/*}*/
+
+
+/*@media (prefers-color-scheme: dark) {*/
+/*    html {*/
+/*        color-scheme: dark;*/
+/*    }*/
+
+/*    body {*/
+/*        color: white;*/
+/*        background: black;*/
+/*    }*/
+/*}*/
+
+
+.reactFlowChartStyle {
+    width: calc(100% - 150px);
+    height: 400px;
+    margin-left: auto;
+    margin-right: auto;
+}
 
 .text-updater-node {
-    height: 50px;
+    width: 40px;
+    height: 40px;
     border: 1px solid #eee;
     padding: 5px;
     border-radius: 5px;
@@ -39,13 +78,5 @@ a {
     display: block;
     color: #777;
     font-size: 12px;
-}
-
-
-.reactFlowChartStyle {
-    width: calc(100% - 100px);
-    height: 400px;
-    margin-left: auto;
-    margin-right: auto;
 }
 
