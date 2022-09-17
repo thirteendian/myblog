@@ -64,6 +64,16 @@ function Blog(props) {
     const initialNodes = [
 
         {
+            id: 'blog',
+            type: 'techStackFlowNode',
+            data: {
+                value: 'blog',
+                onClick: onClickNodeHandler,
+            },
+            position: {x: 0, y: -100},
+        },
+
+        {
             id: 'js',
             type: 'techStackFlowNode',
             data: {

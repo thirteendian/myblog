@@ -27,7 +27,7 @@ export async function getStaticProps({params}) {
 
 //
 const divContainer = styled.div`
-height: 100%;
+  height: 100%;
 `
 
 const ContentContainer = styled.div`
@@ -55,6 +55,10 @@ const MarkDownHtmlColumn = styled.div`
 `
 
 const MarkDownHtmlContent = styled.div`
+  top: 20px;
+  bottom: 20px;
+  position: relative;
+  overflow: auto;
   margin-left: 4%;
   margin-right: 4%;
 `
@@ -64,8 +68,8 @@ const TableOfContentColumn = styled.div`
   position: -webkit-sticky; /* For Safari */
   top: 24px; /* How far down the page you want your ToC to live, this is trigger*/
   overflow: auto;
-  
-  float:right;
+
+  float: right;
   max-height: calc(100vh - 40px);
   width: 200px;
   background-color: white;
@@ -118,7 +122,6 @@ export default function Post({postData}) {
         <div>
 
 
-
             <Layout>
                 <div className="reactFlowChartStyle">
                     <ReactFlow
@@ -145,8 +148,6 @@ export default function Post({postData}) {
                 <MarkDownHtmlColumn>
                     <MarkDownHtmlContent dangerouslySetInnerHTML={{__html: postData.contentHtml}}/>
                 </MarkDownHtmlColumn>
-
-
 
 
             </Layout>

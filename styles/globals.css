@@ -1,28 +1,34 @@
 
 @font-face {
     font-family: "wyld";
-    src:url("font/LibreCaslonDisplay-Regular.ttf");
+    src:url("font/wyld_test.otf");
     font-style: normal;
 }
-/*@font-face {*/
-/*    font-family: "wyld";*/
-/*    src: url("font/wyldi.TTF");*/
-/*    font-style: italic;*/
-/*}*/
+
+@font-face {
+    font-family: "goudy";
+    src:url("font/GoudyInitialen.ttf");
+    font-style: normal;
+}
+@font-face {
+    font-family: "wyld";
+    src: url("font/wyldi.TTF");
+    font-style: italic;
+}
 
 html,
 body {
     padding: 0;
     margin: 0;
     background-color: #111111;
-    font-family: wyld;
+    font-family: wyld,serif;
     /*,wyld,-apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,*/
     /*Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;*/
 }
 
 a {
-    color: inherit;
-    text-decoration: none;
+    color: firebrick;
+    text-decoration: underline;
 }
 
 * {
@@ -34,7 +40,53 @@ p{
     font-feature-settings: inherit;
     font-variant-ligatures: common-ligatures discretionary-ligatures contextual;
 }
+ol {
+    font-size: larger;
+    font-variant-ligatures:inherit;
+}
 
+
+h2{
+    font-size: x-large;
+    font-weight: bold;
+    background-color: firebrick;
+    color: white;
+
+}
+h3{
+    font-size: x-large;
+    color: firebrick;
+}
+
+.intro::first-letter{
+    font-family: goudy,serif;
+    font-size: 5.5rem;
+    font-weight: normal;
+    color: firebrick;
+
+
+    float: left;
+    line-height: 0.9;
+    margin-right: 0.01em;
+}
+
+
+th,td{
+    border: 1px solid black;
+    padding: 7px;
+}
+table{
+    text-align: center;
+    vertical-align: middle;
+}
+thead th{
+    width: 10%;
+}
+
+code{
+    background-color: #cccccc;
+    border-radius: 5px;
+}
 /*nav {*/
 /*    position: sticky;*/
 /*    position: -webkit-sticky; !* For Safari *!*/
