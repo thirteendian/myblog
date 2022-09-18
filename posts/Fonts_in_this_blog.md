@@ -45,13 +45,13 @@ in [BabelStrone Blog's The Rules for Long S](https://www.babelstone.co.uk/Blog/2
 2. Short s is used before an apostrophe (e.g. clos’d, us’d)
 3. Short s is used before the letter f (e.g. ſatisfaction, misfortune, transfuſe, transfix, transfer, ſucceſsful)
 4. Short s is used after the letter f (e.g. offset), although not if the word is hyphenated (e.g.
-   off-ſet) [see Short S before and after F for details]
+   off-ſet) 
 5. Short s is used before the letter b in books published during the 17th century and the first half of the 18th
    century (e.g. husband, Shaftsbury), but long s is used in books published during the second half of the 18th
-   century (e.g. huſband, Shaftſbury) [see Short S before B and K for details]
+   century (e.g. huſband, Shaftſbury) 
 6. Short s is used before the letter k in books published during the 17th century and the first half of the 18th
    century (e.g. skin, ask, risk, masked), but long s is used in books published during the second half of the 18th
-   century (e.g. ſkin, aſk, riſk, maſked) [see Short S before B and K for details]
+   century (e.g. ſkin, aſk, riſk, maſked) 
 7. Short s is used before a hyphen in compound words with the first element ending in the letter s (e.g. croſs-piece,
    croſs-examination, Preſs-work, bird’s-neſt)
 8. Compound words with the first element ending in double s and the second element beginning with s are normally and
@@ -65,7 +65,7 @@ in [BabelStrone Blog's The Rules for Long S](https://www.babelstone.co.uk/Blog/2
 11. Double s is normally written as double long s medially and as long s followed by short s finally (e.g. poſſeſs,
     poſſeſſion), although in some late 18th and early 19th century books a different rule is applied, reflecting
     contemporary usage in handwriting, in which long s is used exclusively before short s medially and
-    finally [see Rules for Long S in some late 18th and early 19th century books for details]
+    finally 
 12. Long s is maintained in abbreviations such as ſ. for ſubſtantive, and Geneſ. for Geneſis (this rule means that it is
     practically impossible to implement fully correct automatic contextual substitution of long s at the font level)
 
@@ -281,6 +281,9 @@ f_char | short_s @<convert_back_to_short_s> |
 And following the other ligature rules. Since we have converted all necessary short s back,
 we will only consider `s` related ligatures.
 
+### Adding extra ligatures
+
+Few other necessary ligatures are added : `ſj`,`ſſj`, `st`, `Th`
 
 fi fj fl ff 
 
@@ -290,9 +293,9 @@ sh si sl ss st
 
 ssf ssb ssk ss- ss'
 
-ct fast The
+ct fst The
 
 successful clos'd offset off-set husband skin cross-piece cross-stitch possession
 
-ß
+Question
 

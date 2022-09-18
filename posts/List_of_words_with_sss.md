@@ -1,5 +1,7 @@
 ---
 title: List of Words with SSS
+date: '2022-09-16'
+label: blog
 ---
 
 1. List of `ss-s` pattern closed compound word in English/French:  
