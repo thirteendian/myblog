@@ -1,25 +1,25 @@
 
 @font-face {
     font-family: "wyld";
-    src:url("./styles/font/Yyld-Regular.otf");
+    src:url("/styles/font/Yyld-Regular.otf");
     font-style: normal;
 }
 @font-face {
     font-family: "wyld";
-    src: url("./styles/font/Yyld-Italic.otf");
+    src: url("/styles/font/Yyld-Italic.otf");
     font-style: italic;
 }
 
 @font-face {
     font-family: "goudy";
-    src:url("./styles/font/GoudyInitialen.ttf");
+    src:url("/styles/font/GoudyInitialen.ttf");
     font-style: normal;
 }
 
 
 @font-face {
     font-family: "caslon";
-    src: url("./styles/font/librecaslon.TTF");
+    src: url("/styles/font/librecaslon.TTF");
     font-style: italic;
 }
 html,
