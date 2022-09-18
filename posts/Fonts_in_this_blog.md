@@ -283,7 +283,7 @@ we will only consider `s` related ligatures.
 
 ### Adding extra ligatures
 
-Few other necessary ligatures are added : `ſj`,`ſſj`, `st`, `Th`
+Few other necessary ligatures are added : `ſj`,`ſſj`, `st`, `Th`, `cp`, `et`, `sp`, `Qu`, also with arrow `->` and `<-`.
 
 fi fj fl ff 
 
@@ -295,7 +295,9 @@ ssf ssb ssk ss- ss'
 
 ct fst The
 
+fsp et 
+
 successful clos'd offset off-set husband skin cross-piece cross-stitch possession
 
-Question
+Question Quintessences Quadrumvirates
 
