@@ -1,34 +1,33 @@
 
 @font-face {
-    font-family: "wyld";
-    src:url("/styles/font/Yyld-Regular.otf");
+    font-family: "yyld";
+    src:url("../styles/font/Yyld-Regular.otf");
     font-style: normal;
 }
 @font-face {
-    font-family: "wyld";
-    src: url("/styles/font/Yyld-Italic.otf");
+    font-family: "yyld";
+    src: url("../styles/font/Yyld-Italic.otf");
     font-style: italic;
 }
 
 @font-face {
     font-family: "goudy";
-    src:url("/styles/font/GoudyInitialen.ttf");
+    src:url("../styles/font/GoudyInitialen.ttf");
     font-style: normal;
 }
 
 
-@font-face {
-    font-family: "caslon";
-    src: url("/styles/font/librecaslon.TTF");
-    font-style: italic;
-}
+/*@font-face {*/
+/*    font-family: "caslon";*/
+/*    src: url("/styles/font/librecaslon.ttf");*/
+/*    font-style: italic;*/
+/*}*/
 html,
 body {
     padding: 0;
     margin: 0;
     background-color: #111111;
-    font-family: wyld, caslon, serif;
-    /*,wyld,-apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,*/
+    font-family: yyld, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, serif;
     /*Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;*/
     font-variant-ligatures: common-ligatures historical-ligatures discretionary-ligatures contextual;
 }
