@@ -55,12 +55,15 @@ const MarkDownHtmlColumn = styled.div`
 `
 
 const MarkDownHtmlContent = styled.div`
-  top: 20px;
+  //top: 20px;
   bottom: 20px;
+  padding-top: 2em;
+  padding-bottom: 2em;
   position: relative;
   overflow: auto;
   margin-left: 4%;
   margin-right: 4%;
+  margin-bottom: 4%;
 `
 
 const TableOfContentColumn = styled.div`
