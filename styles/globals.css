@@ -1,8 +1,13 @@
 
 @font-face {
     font-family: "wyld";
-    src:url("font/yyld.otf");
+    src:url("font/Yyld-Regular.otf");
     font-style: normal;
+}
+@font-face {
+    font-family: "wyld";
+    src: url("font/Yyld-Italic.otf");
+    font-style: italic;
 }
 
 @font-face {
@@ -10,11 +15,7 @@
     src:url("font/GoudyInitialen.ttf");
     font-style: normal;
 }
-@font-face {
-    font-family: "wyld";
-    src: url("font/wyldi.TTF");
-    font-style: italic;
-}
+
 
 @font-face {
     font-family: "caslon";
@@ -29,6 +30,7 @@ body {
     font-family: wyld, caslon, serif;
     /*,wyld,-apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,*/
     /*Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;*/
+    font-variant-ligatures: common-ligatures historical-ligatures discretionary-ligatures contextual;
 }
 
 a {
@@ -43,7 +45,6 @@ a {
 p{
     font-size:x-large;
     font-feature-settings: inherit;
-    font-variant-ligatures: common-ligatures historical-ligatures discretionary-ligatures contextual;
 }
 ol {
     font-size: larger;
@@ -54,12 +55,14 @@ ol {
 h2{
     font-size: x-large;
     font-weight: bold;
+    font-variant-ligatures: common-ligatures historical-ligatures discretionary-ligatures contextual;
     background-color: firebrick;
     color: white;
 
 }
 h3{
     font-size: x-large;
+    font-variant-ligatures: common-ligatures historical-ligatures discretionary-ligatures contextual;
     color: firebrick;
 }
 
@@ -83,6 +86,7 @@ th,td{
 table{
     text-align: center;
     vertical-align: middle;
+    font-size: x-large;
 }
 thead th{
     width: 10%;
@@ -92,15 +96,7 @@ code{
     background-color: #cccccc;
     border-radius: 5px;
 }
-/*nav {*/
-/*    position: sticky;*/
-/*    position: -webkit-sticky; !* For Safari *!*/
-/*    top: 24px; !* How far down the page you want your ToC to live *!*/
 
-/*    !* Give table of contents a scrollbar *!*/
-/*    max-height: calc(100vh - 40px);*/
-/*    overflow: auto;*/
-/*}*/
 
 
 /*@media (prefers-color-scheme: dark) {*/
@@ -117,7 +113,7 @@ code{
 
 .reactFlowChartStyle {
     width: calc(100% - 150px);
-    height: 400px;
+    height: 200px;
     margin-left: auto;
     margin-right: auto;
 }
@@ -136,4 +132,7 @@ code{
     color: #777;
     font-size: 12px;
 }
-
+.title_frame_picture{
+    -webkit-filter: invert(1);
+    filter: invert(1);
+}

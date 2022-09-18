@@ -26,6 +26,7 @@ const LeftSection = styled.section`
 const RightSection = styled.section`
   float: right;
   position: relative;
+  display: flex;
   background-color: black;
   width: 62%;
 `;
@@ -40,7 +41,19 @@ const ListPost = styled.li`
 
 const PostTitle = styled.div`
   height: 70px;
-  font-size: large;
+  font-size: x-large;
+  display: flex;
+  justify-content: space-between;
+  a{
+    background-color: darkred;
+    color: white;
+    text-decoration: none;
+  }
+  a:hover{
+    background-color: firebrick;
+    color: white;
+    text-decoration: none;
+  }
 `
 
 
@@ -55,14 +68,11 @@ export async function getStaticProps({params}) {
 }
 
 function Blog(props) {
-
-
     //Settings for StackFlow
     const onClickNodeHandler = (nodeName) => {
         setCurrLabel(nodeName)
     }
     const initialNodes = [
-
         {
             id: 'blog',
             type: 'techStackFlowNode',
@@ -126,8 +136,8 @@ function Blog(props) {
     ];
     const initialEdges = [
         // {id: 'e1-2', source: '1', target: '3', animated: true},
-        {id:`ejs-react`,source:'js',target:'react',animated:true},
-        {id:`ereact-next`,source:'react',target:'next',animated:true}
+        {id: `ejs-react`, source: 'js', target: 'react', animated: true},
+        {id: `ereact-next`, source: 'react', target: 'next', animated: true}
 
     ];
     const [nodes, setNodes] = useState(initialNodes);
@@ -172,13 +182,17 @@ function Blog(props) {
                                 .map(
                                     ({id, date, title}) => (
                                         <ListPost key={id}>
-                                            <div style={{marginLeft: 20}}>
+                                            <div>
                                                 <Link href={`/blog/${encodeURIComponent(id)}`}>
                                                     <PostTitle>
-                                                        {title}
+                                                        <a>
+                                                            {title}
+                                                            <p/>
+                                                            {date}
+                                                        </a>
                                                     </PostTitle>
                                                 </Link>
-                                                {date}
+
                                             </div>
                                         </ListPost>
                                     )

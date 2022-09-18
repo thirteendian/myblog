@@ -3,20 +3,46 @@ import Head from "next/head";
 import Profile from '../Porfile';
 import Link from "next/link";
 import styled from "styled-components";
+import Image from "next/image";
 
 const LayoutContainer = styled.div`
   height: 100%;
 `
 
-const BackToBlog = styled.div`
+const NavigationBar = styled.div`
+  margin: auto;
+  padding-left: 10px;
   position: sticky;
   position: -webkit-sticky;
   float: top;
-  
+  background-color: grey;
   width: 100%;
-  background-color: #00BB33;
-  
+  display: flex;
 `
+
+const NavigationProfile = styled.div`
+  float: left;
+  border-radius: 15px;
+  overflow: hidden;
+  width: 40px;
+  height: 40px;
+`
+
+const NavigationBack = styled.nav`
+  display: flex;
+  justify-content: space-between;
+  a {
+    background-color: #353637;
+    color: #fff;
+    padding: 0.5rem;
+    text-decoration: none;
+  }
+  a:hover{
+    background-color: #999999;
+    color: firebrick;
+  }
+`
+
 const Index = ({children, home}) => {
     return (
         <LayoutContainer>
@@ -38,9 +64,17 @@ const Index = ({children, home}) => {
                                 </>
                             ) :
                             (
-                                <BackToBlog>
-                                    <Link href="/blog">Back to Home</Link>
-                                </BackToBlog>
+                                <NavigationBar>
+                                    <NavigationProfile>
+                                        <Image src="/Profile_blog.png" width="40px" height="40px"
+                                               objectFit="cover"/>
+                                    </NavigationProfile>
+                                    <NavigationBack>
+                                        <Link href="/blog"><a>Back to Home</a></Link>
+                                    </NavigationBack>
+
+
+                                </NavigationBar>
                             )
                     }
                 </>

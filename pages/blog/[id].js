@@ -1,7 +1,8 @@
 import Layout from '../../components/Layouts';
 import {getAllPostIds, getPostData} from '../../lib/posts';
 import ReactFlow, {Background, MiniMap} from "react-flow-renderer";
-import {useState, useCallback, useMemo} from "react";
+import {useState, useCallback, useMemo, Fragment} from "react";
+import Image from "next/image"
 import TechStackFlowNode from "../../components/TechStackFlowNode";
 import styled from "styled-components";
 import TableOfContent from "../../components/TableOfContent";
@@ -86,6 +87,46 @@ const TableOfContentColumn = styled.div`
   }
 `
 
+const TitleColumn = styled.div`
+  padding-top: 3ex;
+  height: 100%;
+  width: 100%;
+  border-radius: 15pt;
+  @media (min-width: 960px) {
+    width: 960px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+`
+const TitleSubColumn = styled.div`
+  padding-left: 2em;
+  padding-right: 2em;
+  color: white;
+  font-size: xxx-large;
+  text-align: center;
+`
+
+const SubtitleSubColumn = styled.div`
+  padding-left: 2em;
+  padding-right: 2em;
+  color: #888888;
+  font-size: x-large;
+  text-align: center;
+`
+const DateSubColumn = styled.div`
+  margin-left: auto;
+  background-color: firebrick;
+  color: white;
+  text-align: center;
+  width: 12ex;
+  border-radius: 15px;
+  font-size: x-large;
+`
+
+const LableSubColumn = styled.div`
+  color: firebrick;
+`
+
 export default function Post({postData}) {
     const onClickNodeHandler = () => {
 
@@ -126,23 +167,31 @@ export default function Post({postData}) {
 
 
             <Layout>
-                <div className="reactFlowChartStyle">
-                    <ReactFlow
-                        nodes={nodes}
-                        edges={edges}
-                        nodeTypes={nodetypes}
-                        fitView>
-                        <MiniMap/>
-                        <Background/>
-                    </ReactFlow>
-                </div>
+                {/*<div className="reactFlowChartStyle">*/}
+                {/*    <ReactFlow*/}
+                {/*        nodes={nodes}*/}
+                {/*        edges={edges}*/}
+                {/*        nodeTypes={nodetypes}*/}
+                {/*        fitView>*/}
+                {/*        <MiniMap/>*/}
+                {/*        <Background/>*/}
+                {/*    </ReactFlow>*/}
+                {/*</div>*/}
+                <TitleColumn>
+                    <TitleSubColumn>
+                        {postData.title}
+                    </TitleSubColumn>
+                    <SubtitleSubColumn>
+                        {postData.subtitle}
+                    </SubtitleSubColumn>
+                    <DateSubColumn>
+                        {postData.date}
+                    </DateSubColumn>
+                    {/*<LableSubColumn>*/}
+                    {/*    {postData.label.split("/")}*/}
+                    {/*</LableSubColumn>*/}
+                </TitleColumn>
 
-                {postData.title}
-                <br/>
-                {postData.id}
-                <br/>
-                {postData.date}
-                <br/>
 
                 <TableOfContentColumn>
                     <TableOfContent/>
