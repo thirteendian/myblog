@@ -17,28 +17,15 @@ export default function Home({allPostsData}) {
         <Layout home>
             <Head>
                 <title>
-                    Yuxuan blog
+                    Yuxuan Yang
                 </title>
             </Head>
             <section>
                 <p>
-                    This is my blog
+                    这里啥也没有
                 </p>
             </section>
-            <section>
-                <ul>
-                    {allPostsData.map(({id, date, title}) => (
-                            <li key={id}>
-                                {title}
-                                <br/>
-                                {id}
-                                <br/>
-                                {date}
-                            </li>
-                        )
-                    )}
-                </ul>
-            </section>
+
         </Layout>
     )
 }

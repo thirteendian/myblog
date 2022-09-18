@@ -1,26 +1,138 @@
+
+@font-face {
+    font-family: "wyld";
+    src:url("font/Yyld-Regular.otf");
+    font-style: normal;
+}
+@font-face {
+    font-family: "wyld";
+    src: url("font/Yyld-Italic.otf");
+    font-style: italic;
+}
+
+@font-face {
+    font-family: "goudy";
+    src:url("font/GoudyInitialen.ttf");
+    font-style: normal;
+}
+
+
+@font-face {
+    font-family: "caslon";
+    src: url("font/librecaslon.TTF");
+    font-style: italic;
+}
 html,
 body {
-  padding: 0;
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+    padding: 0;
+    margin: 0;
+    background-color: #111111;
+    font-family: wyld, caslon, serif;
+    /*,wyld,-apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,*/
+    /*Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;*/
+    font-variant-ligatures: common-ligatures historical-ligatures discretionary-ligatures contextual;
 }
 
 a {
-  color: inherit;
-  text-decoration: none;
+    color: firebrick;
+    text-decoration: underline;
 }
 
 * {
-  box-sizing: border-box;
+    box-sizing: border-box;
 }
 
-@media (prefers-color-scheme: dark) {
-  html {
-    color-scheme: dark;
-  }
-  body {
+p{
+    font-size:x-large;
+    font-feature-settings: inherit;
+}
+ol {
+    font-size: larger;
+    font-variant-ligatures:inherit;
+}
+
+
+h2{
+    font-size: x-large;
+    font-weight: bold;
+    font-variant-ligatures: common-ligatures historical-ligatures discretionary-ligatures contextual;
+    background-color: firebrick;
     color: white;
-    background: black;
-  }
+
+}
+h3{
+    font-size: x-large;
+    font-variant-ligatures: common-ligatures historical-ligatures discretionary-ligatures contextual;
+    color: firebrick;
+}
+
+.intro::first-letter{
+    font-family: goudy,serif;
+    font-size: 5.5rem;
+    font-weight: normal;
+    color: firebrick;
+
+
+    float: left;
+    line-height: 0.9;
+    margin-right: 0.01em;
+}
+
+
+th,td{
+    border: 1px solid black;
+    padding: 7px;
+}
+table{
+    text-align: center;
+    vertical-align: middle;
+    font-size: x-large;
+}
+thead th{
+    width: 10%;
+}
+
+code{
+    background-color: #cccccc;
+    border-radius: 5px;
+}
+
+
+
+/*@media (prefers-color-scheme: dark) {*/
+/*    html {*/
+/*        color-scheme: dark;*/
+/*    }*/
+
+/*    body {*/
+/*        color: white;*/
+/*        background: black;*/
+/*    }*/
+/*}*/
+
+
+.reactFlowChartStyle {
+    width: calc(100% - 150px);
+    height: 200px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.text-updater-node {
+    width: 40px;
+    height: 40px;
+    border: 1px solid #eee;
+    padding: 5px;
+    border-radius: 5px;
+    background: white;
+}
+
+.text-updater-node label {
+    display: block;
+    color: #777;
+    font-size: 12px;
+}
+.title_frame_picture{
+    -webkit-filter: invert(1);
+    filter: invert(1);
 }
