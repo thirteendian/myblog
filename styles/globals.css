@@ -17,17 +17,17 @@
 }
 
 
-/*@font-face {*/
-/*    font-family: "caslon";*/
-/*    src: url("/styles/font/librecaslon.ttf");*/
-/*    font-style: italic;*/
-/*}*/
+@font-face {
+    font-family: "caslon";
+    src: url("../styles/font/librecaslon.ttf");
+    font-style: italic;
+}
 html,
 body {
     padding: 0;
     margin: 0;
     background-color: #111111;
-    font-family: yyld, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, serif;
+    font-family: yyld, caslon, serif;
     /*Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;*/
     font-variant-ligatures: common-ligatures historical-ligatures discretionary-ligatures contextual;
 }
