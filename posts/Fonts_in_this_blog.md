@@ -15,7 +15,7 @@ and of course plenty of re-encodings and adjustments are required.
 This article described my process of modifying the ligature font on this website.
 </p>
 
-## Four Types of Ligature.
+## Four Types of Ligature in OpenType and CSS 
 
 There are normally four types of ligature:
 *common*, *discretionary*, *historical*, *contextual*. CSS by `font-variant-ligatures`.
@@ -67,6 +67,19 @@ in [BabelStrone Blog's The Rules for Long S](https://www.babelstone.co.uk/Blog/2
     contemporary usage in handwriting, in which long s is used exclusively before short s medially and finally
 12. Long s is maintained in abbreviations such as ſ. for ſubſtantive, and Geneſ. for Geneſis (this rule means that it is
     practically impossible to implement fully correct automatic contextual substitution of long s at the font level)
+
+### R Rotunda and Rum Rounda
+
+R Rotunda/Rum Rounda (`Ꝛ` `ꝛ`),
+in unicode "UniA75A" and "UniA75B", 
+normally only used in "Blackletter" or "Gothic" style font, thus our roman typefaces won't consider to use it.
+Referred to ["BabelStone's Blog Article about R Rotunda"](https://www.babelstone.co.uk/Blog/2006/07/r-rotunda-part-1.html),
+since the R Rotunda is not a consistent rule, and various between different eras and fonts, 
+we sum up the brief rules as followings:
+1. R Rotunda is used after letter B, D, O, P, V, W, b, h, o, p, v, w.
+2. R Rotunda is only used on bent d, not used on straight d
+3. R rotunda "may" add on y
+4. Apostrophe will not break R Rotunda.
 
 ## Wyld Font.
 
@@ -283,7 +296,7 @@ f_char | short_s @<convert_back_to_short_s> |
 After converted all necessary `ſ` back to `s`, I created the Ligature Substitution Table to make all `ſ` related
 ligatures.
 
-### Adjust Italic Font
+### Adjust Italic Font.
 
 Beside of regular type, there're also a version of italic Wyld font provided as name `Wyldi.ttf`.
 I applied the similar Ligature rules as previously designed. To generate the same font with different style name,
@@ -291,14 +304,41 @@ we need to change the font name to be the same, but different style name. Goto `
 change `Fontname` to be "Yyld-Regular" or "Yyld-Italic", correspondingly to the `Weight` regular and italic.
 but maintain the `Family Name` to be the same.
 
-### Clockwise and CounterClockwise
+### Clockwise and CounterClockwise.
 Some circle part should be white background but black filled, select the circle, `Element`->`Clockwise` will solve this problem.
+
+### No long s rule support for EOF/EL.
+
+In unicode, there are three important End of line/End of file Return that are normally represent the end of the content.
+The name ins font table are `Uni000A`(LF/Line Feed), `Uni000C`(FF/Form Feed) and `Uni000D`(CR/Carriage Return).
+
+We need to add an extra contextual substitution to support the situation when `s` is at the end, but no characters behind it.
+It should still be considered as the end of word to fit the (Rule 1), however, FontForge Contextual Class Substitution SubTable does not support it,
+because the three character are undefined to FontForge. Thus you will notice an ugly long s will appeared 
+at every section title, if no other symbols behind it. Thus when use this font, be careful about the LF/FF/CR and add appropriate space/mark to prevent it.
+
+### No Contextual Rule supported in Safari.
+
+Unfortunately, the contextual substitution on safari.
 
 ### Final Grain.
 
+More historical rules can be checked at ["The Printer's Grammar"](https://www.google.com/books/edition/The_Printer_s_Grammar/jjE5AAAAMAAJ?hl=en&gbpv=0)
+written in 1787 by John Smith. However, we will combine the modern rule together in this font for better web display,
+one of them maybe displayed at ["Design With FontForge"](http://designwithfontforge.com/en-US/Spacing_Metrics_and_Kerning.html).
+
+We firstly adjust the "Spacing" of letters, there are few points:
+1. Symmetric character have symmetric side bearing.
+2. f, g, j, p, ſ, y requires strong space before them.
+3. When d, f, l at end of word, strong space after them.
+4. 
+
 Few other necessary ligatures are added : `ſj`,`ſſj`, `st`, `Th`, `cp`, `et`, `sp`, `Qu`, also with arrow `->` and `<-`.
 The modified Font name is "Yyld-Regular.otf" and "Yyld-Italic.otf", 
-both belongs to font family "Yyld".
+both belongs to font family "Yyld". To support web load, we will generate woff files besides otf,
+as "Yyld-Regular.woff" and "Yyld-Italich.woff".
+and use it in this blog.
+
 Here are the table tests for special ligatures in this font:
 
 F related ligatures:
@@ -322,5 +362,3 @@ Other ligatures:
 |------|------|-------|-------|------|-------|------|
 | ct   | cp   | fst   | fsp   | et   | The   | Qu   | 
 | *ct* | *cp* | *fst* | *fsp* | *et* | *The* | *Qu* | 
-
-

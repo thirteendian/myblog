@@ -1,12 +1,12 @@
 
 @font-face {
     font-family: "yyld";
-    src:url("../styles/font/Yyld-Regular.otf");
+    src:url("../styles/font/Yyld-Regular.woff");
     font-style: normal;
 }
 @font-face {
     font-family: "yyld";
-    src: url("../styles/font/Yyld-Italic.otf");
+    src: url("../styles/font/Yyld-Italich.woff");
     font-style: italic;
 }
 
@@ -27,7 +27,7 @@ body {
     padding: 0;
     margin: 0;
     background-color: #111111;
-    font-family: yyld, caslon, serif;
+    font-family: yyld,  caslon, "Times New Roman", -apple-system ,serif;
     /*Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;*/
     font-variant-ligatures: common-ligatures historical-ligatures discretionary-ligatures contextual;
 }
