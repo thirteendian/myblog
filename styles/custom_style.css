@@ -1,0 +1,66 @@
+blockquote{
+    display:block;
+    background: #fff;
+    padding: 5px 5px 1px 35px;
+    margin: 0 0 20px;
+    position: relative;
+
+    /*Font*/
+    font-family: Yyld, serif;
+    font-size: 16px;
+    line-height: 1;
+    color: #666;
+    text-align: justify;
+
+    /*Borders - (Optional)*/
+    border-left: 7px solid firebrick;
+    border-right: 2px solid firebrick;
+
+    /*Box Shadow - (Optional)*/
+    -moz-box-shadow: 2px 2px 15px #ccc;
+    -webkit-box-shadow: 2px 2px 15px #ccc;
+    box-shadow: 2px 2px 15px #ccc;
+
+}
+
+blockquote::before{
+
+    content: "\008D"; /*Unicode for Left Double Quote*/
+
+    /*Font*/
+    font-family: Yyld, serif;
+    font-size: 40px;
+    font-weight: normal;
+    color: firebrick;
+
+    /*Positioning*/
+    position: absolute;
+    left: 5px;
+    top:5px;
+
+}
+
+blockquote::after{
+    /*Reset to make sure*/
+    content: "";
+}
+
+blockquote a{
+    text-decoration: none;
+    background: #eee;
+    cursor: pointer;
+    padding: 0 3px;
+    color: firebrick;
+}
+
+blockquote p{
+    font-size: 20px;
+    font-style: normal;
+}
+blockquote a:hover{
+    color: #666;
+}
+
+blockquote em{
+    font-style: italic;
+}

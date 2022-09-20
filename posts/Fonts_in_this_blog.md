@@ -1,6 +1,6 @@
 ---
-title: The Font In This Blog. Font Ligature, Long S And FontForge.
-subtitle: The modifications of Caslon style font Wyld.
+title: The Font In This Blog. Font Ligature, Long S And FontForge
+subtitle: The modifications of Caslon style font Wyld
 date: '2022-09-16' 
 label: blog
 ---
@@ -33,9 +33,9 @@ The *contextual* ligatures referred to the adjustment of single characters with 
 font, "on", "ose" and many others may be adjusted to connect to each other. The contextual alternates should be designed
 to properly connect. OpenType value is `calt`, CSS mode is `contextual` and default activated.
 
-## Ligature Rules.
+## Ligature Rules
 
-### Long and Short s.
+### Long and Short s
 
 According to Boston
 1775's ["The Long List of Rules for the Long s"](https://boston1775.blogspot.com/2013/10/the-long-list-of-rules-for-long-s.html)
@@ -81,14 +81,14 @@ we sum up the brief rules as followings:
 3. R rotunda "may" add on y
 4. Apostrophe will not break R Rotunda.
 
-## Wyld Font.
+## Wyld Font
 
 The font information can be checked
 at ["18 Century Ligatures and Fonts"](https://www.orbitals.com/self/ligature/ligature.pdf). The zip folder provided
 contains a `.dot` file with early ages embedded VBA Macro, and typically David Manthey's solution about replacing
 ligature letter to be unusual letter.
 
-### Extract the VBA Macro in dot file.
+### Extract the VBA Macro in dot file
 
 It is rare to find and VB sources and MS Office before 2003, I considered the tools to extract VBA directly from dot
 file. Olevba is an open-source Python shell, and it can be
@@ -141,9 +141,9 @@ following table showed all replacements he defined, from left to right, in order
 |------|-----|------|-------|------|------|------|------|------|------|-------|-------|------|------|------|------|------|------|------|------|
 | `À`  | `Ç` | `s`  | `_Ç`  | `s’` | `Ás` | `fs` | `sf` | `sk` | `sb` | `Â`   | `Ã`   | `Á`  | `Ä`  | `Å`  | `Ë`  | `È`  | `É`  | `Ê`  | `Ì`  |
 
-Note that `Ç>` means letter `Ç` at the end of word, and `_s>` means letter `s` at the beginning of word.
+> `Ç>` might means letter `Ç` at the end of word, and `_s>` means letter `s` at the beginning of word.
 
-### David's Special Replacement.
+### David's Special Replacement
 
 Specific replacement happened to fit rules of Long and Short s:
 
@@ -155,7 +155,7 @@ Specific replacement happened to fit rules of Long and Short s:
 
 David didn't do any replacement about s in front of hyphen (Rule 7), as well as when this hyphen is omit (Rule 8)
 
-### David's Problematic Solution.
+### David's Problematic Solution
 
 However, we noticed that his replacement will cause special character such like `À` or `Ç` not be able to be used and
 searched anymore. Actually, according to Tex
@@ -163,20 +163,19 @@ StackExchange [Question 290261](https://tex.stackexchange.com/questions/290261),
 fit current Latex and CSS rules, the `.ttf` file need to be converted to `.otf`, the em size need to be adjusted, the
 ligature configuration in `otf` file(especially in his italic version `wyldi.ttf`).
 
-## Modifications based on Wyld.
+## Modifications based on Wyld
 
 The followings are the process of my modification of original wyld, with new standard OTF script and conditional
 ligature, I will name this font to be Yyld, for my future usage, and usage in this blog.
 
-### Convert TTF to OTF.
-
+### Convert TTF to OTF
 Before Generating new `otf` font in *FontForge*, a few adjustments are required.
 
 Goto `Element`->`Font Info` -> `General`, adjust `Em Size` to be less than 1000 value. Then goto `Element`->`Font Info`
 -> `OS/2`, adjust `OS/2 Version` to be larger than 1 value(can be auto). Finally, generate otf font by `File`
 ->`Generate Fonts`, under new pop up window, choose `OpenType(CFF)`, while under suitable folder click `Generate`.
 
-### Add Common Ligature.
+### Add Common Ligature
 
 The Ligature Substitution replace multiple glyph with one single glyph.
 
@@ -199,36 +198,53 @@ by space. This will help FontForge relates source slots and ligature slot in Com
 
 As mentioned above, at newly created encoding slot, choose `Element`->`Build`->`Build Composite Glyph`, this function
 only works while previous subtable is set correctly, so FontForge will put source slots glyph into this new slot
-together. Before start to edit this slot, for example, add ligature line, we need to firstly Unlink Reference, or every
+together during build process. Before start to edit this slot, for example, add ligature line, we need to firstly Unlink Reference, or every
 edition will reflect on source glyph as well. Double click the slot entering the character view window, click `Edit`
 ->`Unlink Reference`.
 
-For multiple editing, I strongly suggest creating all necessary slots first with correct renaming, then add subtable
-under `Element`->`Font Info`->`Lookups`, with auto searching name, to avoid click on each slot, and finally Build
-components together.
+For multiple editing, I strongly suggest creating all necessary new encoding slots first with correct renaming, then add subtable
+under `Element`->`Font Info`->`Lookups`, with auto searching name, to avoid of clicking on each slot one by one. Finally, we can 
+"Build" all components together, and adjust them one by one.
 
 At my project, since all ligature drawing has already been down, we can simply copy it from the original incorrect
-position to the newly created encoding slot. To test the result, one can use `Metrics`->`New Metrics Window` to type and
-test ligature.
+position to the newly created encoding slot. And give that "not-so-uncommon" symbol to it's original position.
 
-Note: When generate new Fonts out, we'd better not replace the original otf file, it may cause ligature not be able to
-use.
 
 Note: The Substitute SubTable's order is mattered if `ff` is matched, then it will jump to the next position. So it's
 necessary to put `ffi/ffl` matching before `ff`
 
 Now we added f and long s related ligatures, and they are under `liga` LookupTable.
 
-### Add Long S Contextual Ligature.
+### Add Long S Contextual Ligature
 
-Note that until now, only f related normal ligatures were working without any conditional cases, as described above, we
-will firstly convert all s to be ſ, then follow the David's replacement strategy, at the following steps:
+Note that until now, only f related normal ligatures were working without any conditional cases, as described above.
+In David's solution, he firstly converted all s to be ſ. However, we won't consider this reverse way, because that will
+cause all s, even the single typed s (before or after nothing), to be longs as well, which does not follow the Rule of end short s(Rule 1).
 
-1. Convert all short s to be ſ.
-2. Replace ſ to be s before all other characters except `f`,`b`,`k`,`-`,`'`
-3. Replace ſ to be s after `f`
-4. Apply `ſſ`, `ſi`, `ſl`,`ſt` ligature rules.
-5. If `sss...` happened, we will specifically consider them as ſſs, with ſſ ligatured, thus no extra rules will need.
+This particular situation can referred to a sets of special symbols that unicode use to represent the End of Line/File. 
+In unicode, there are three important End of line/End of file Return that are normally represent the end of the content.
+The name ins font table are `Uni000A`(LF/Line Feed), `Uni000C`(FF/Form Feed) and `Uni000D`(CR/Carriage Return).
+If we follow the David's strategy, we need to add an extra contextual substitution to support the situation when `s` is at the end, but no characters behind it. 
+or you will notice an ugly long s will appeared at every section title. However, FortForge does not support the contextual substitution before
+the above 3 special symbols.
+
+Thus we will consider a new substitution strategy from the opposite directly, and fit current OTF standard:
+
+1. Add SingleSubstitution Rules to bidirectional convert s and ſ.
+2. Contextual 1-1, If s after everything(except f and ff ligature),  and before alphabets(except f,b,k, and includes ligature symbols), 
+then convert to ſ.
+3. Contextual 1-2, If s before alphabets(except f,b,k, ff related ligatures but includes all other ligature symbols),
+then convert to ſ.
+4. Contextual 2-1, If ſ after f(and ff ligature), and before everything,
+then convert to s.
+5. Contextual 2-2, If ſ before everything except alphabet(except f,b,k and f-related ligature symbols but includes all other ligature symbols)
+then convert to s.
+
+> The name 1-1 means "the first Contextual LookupTable"'s first SubTable. 
+> We create 2 LookupTable here to represent rules of "s to ſ" and "ſ to s".
+> We specifically create a SubTable to represent "Before" rules, 
+> because s might be the "start of file/line", and nothing before or after it.
+> This will solve the problem that contextual substitution does not support LF/FF/CR.
 
 The FontForge supported three different substitution that are also defined in OpenType rules: `Glyph`,`Classes`
 , `Coverage`.
@@ -237,7 +253,7 @@ occurred) with another glyph. Here I will discuss the usage of `Classes` in my m
 FontForge `contextual substitution` will add condition on `single substitution`, so in our case, a Single Substitution
 LookupTable SubTable must be created before add Contextual.
 
-Firstly, create Single Substitution. A Single Substitution LookupTable should be created as followings:
+Firstly, following our step 1, create Single Substitution. A Single Substitution LookupTable should be created as followings:
 `Element`-> `Font Info`-> `Lookups`->`Add Lookup`-> `Type: Single Substitution`->`OK`, here we will add no feature, thus
 it won't reflect any changes.
 
@@ -249,19 +265,20 @@ grammer is described following:
 ```c
 Backtracking_1 | Class_Name_2 @<SingleSubstitutionName>| Lookahead_3
 /* ===========================Explanation===========================
-/* IF Backtracking_1(char in backtracking glyphs class) 
-/* follows by Class_Name_2(char in current glyphs class)
-/* follows by Lookahead_3 (char in lookahead glyphs class),
+ * IF Backtracking_1(char in backtracking glyphs class) 
+ * follows by Class_Name_2(char in current glyphs class)
+ * follows by Lookahead_3 (char in lookahead glyphs class),
 
-/* THEN replace Class_Name_2 char 
-/* with single substitution(defined in Single Substitution LookupTable) 
-/* rule SingleSubstitutionName.
+ * THEN replace Class_Name_2 char 
+ * with single substitution(defined in Single Substitution LookupTable) 
+ * rule SingleSubstitutionName.
+ */
 ```
 
 "`Backtracking_1`", "`Class_Name_2`", "`Lookahead_3`" are classes defined in the bottom part,
 `@<...>` are pre-defined other substitution tables/rules(single substitution, ligature substitution etc.).
 
-For creating Contextual LookupTable, described as followings:
+For creating Contextual LookupTable:
 `Element`-> `Font Info`-> `Lookups`->`Add Lookup`-> `Type: Contextual Chaining Substitution`->`Feature: calt`. On that
 Contextual LookupTable, `Add Subtable`, with `By Classes` and `Complex`.  
 The "Edit Chaining Substitution" dialogue has two part, top part for creating the script, bottom part for defining three
@@ -274,29 +291,62 @@ For example, if `class_1 class_1 class_2` are selected at `Match`, and apply sub
 position `2`, then `class_2` will use that rule, and generate grammar `...|class_1 class_1 class_2 @<ligature_1>`. After
 all set, click `next` to automatically generate grammar script.
 
-Note that **each Contextual Chain subTable must only have one grammer expression**, we need to add a new subTable if
+>Each Contextual Chain subTable must **only have one grammer expression**, we need to add a new subTable if
 more expressions are required.
 
 Since the order of LookupTables(and it's subTable) is crucial in GSUB table. The font will match in order, and
 preferentially match the first rules and jump to the next position. For example, if `ss` is matched, it won't
 match `ssf` at the same position.
 
-Following David's replacement strategy, I did the following changes:
-I put `ſ` at original `s` position, and build an extra encoding "short_s" to represent `s`. Correspondingly I added one
-Single Substitution Table for converting `ſ` back to `s`. Then we write two Contextual Substitution Rules to convert
-long s back to short s using that single substitution rule:
+At the end, we translate the 2,3,4,5 steps into real code:
 
+The first subTable rule in `calt` s to ſ LookupTable is
 ```c
-//First rule to convert (end ſ/ſ before fbk-') back to short s
-| short_s @<convert_back_to_short_s> | Except_all_Alphbeta_without_fbk-'|
-//Second rule to convert ſ after f back to short s
-f_char | short_s @<convert_back_to_short_s> |
+Back | s @<Single Substitution in Latin lookup 0> | Ahead
+/* Back  class includes everything(except f and ff ligature)*/
+/* Ahead class includes all small alphabets(except f,b,k) 
+ * and all ligature symbols(except f-related ligatures) */
+```
+The second subTable rule in `calt` s to ſ LookupTable is
+```c
+| s @<Single Substitution in Latin lookup 0> | Ahead
+/* Ahead class includes all small alphabets(except f,b,k) 
+ * and all ligature symbols(except f-related ligatures) */
 ```
 
-After converted all necessary `ſ` back to `s`, I created the Ligature Substitution Table to make all `ſ` related
-ligatures.
+The third subTable rule in `calt` ſ to s LookupTable is
+```c
+Back | long_s @<Single Substitution in Latin lookup 0> | Ahead
+/* Back  class includes two symbol f and ff ligature*/
+/* Ahead class includes everything*/
+```
 
-### Adjust Italic Font.
+The fourth subTable rule in `calt` s to ſ LookupTable is
+```c
+| long_s @<Single Substitution in Latin lookup 0> | Ahead
+/* Ahead class includes everything, include f,b,k,f-related ligatures, but except all other small alphabics */
+```
+
+>Here we should pay attention that the 3th and 4th table's Ahead class is not the same,
+> becase for 3rd, if ſ is after f/ff, no matter what after it, it would be converted back to small s.
+> But the 4th one only discussed the rule when ſ is the first letter.
+> In the future, if any new symbols are added, one should extend 3rd's Ahead class to include it,
+> but one may not do anything to the 4th Ahead class.
+
+At the end of the table, just as the previous f-related ligature,
+I created the Ligature Substitution Table to make all `ſ` related
+ligatures.
+### Add Long S Contextual Ligature of Compound sss
+I created a specific sss symbols with `ſſs` ligatured together.
+This ligature is at the least rank, if s is not ligatured with any of others,
+then this sss ligature is applied. This will make it possible to distinguish compound sss to fit (Rule 8).
+
+A third `calt` LookupTable is appled behind the previous two,
+with rules: If all three `ſ` is appeared together, then convert the last one to be `s`.
+Also a third `liga` LookupTable is applied behind the previous ligature LookupTable,
+to apply `ſſs` ligature with least priority.
+
+### Adjust Italic Font
 
 Beside of regular type, there're also a version of italic Wyld font provided as name `Wyldi.ttf`.
 I applied the similar Ligature rules as previously designed. To generate the same font with different style name,
@@ -304,40 +354,40 @@ we need to change the font name to be the same, but different style name. Goto `
 change `Fontname` to be "Yyld-Regular" or "Yyld-Italic", correspondingly to the `Weight` regular and italic.
 but maintain the `Family Name` to be the same.
 
-### Clockwise and CounterClockwise.
+### Test Without Exporting
+To test the result, one can use `Metrics`->`New Metrics Window` to type and
+test ligature.
+### Clockwise and CounterClockwise
 Some circle part should be white background but black filled, select the circle, `Element`->`Clockwise` will solve this problem.
 
-### No long s rule support for EOF/EL.
-
-In unicode, there are three important End of line/End of file Return that are normally represent the end of the content.
-The name ins font table are `Uni000A`(LF/Line Feed), `Uni000C`(FF/Form Feed) and `Uni000D`(CR/Carriage Return).
-
-We need to add an extra contextual substitution to support the situation when `s` is at the end, but no characters behind it.
-It should still be considered as the end of word to fit the (Rule 1), however, FontForge Contextual Class Substitution SubTable does not support it,
-because the three character are undefined to FontForge. Thus you will notice an ugly long s will appeared 
-at every section title, if no other symbols behind it. Thus when use this font, be careful about the LF/FF/CR and add appropriate space/mark to prevent it.
-
-### No Contextual Rule supported in Safari.
+### No Contextual Rule supported in Safari
 
 Unfortunately, the contextual substitution on safari.
 
-### Final Grain.
+### Final Grain
 
 More historical rules can be checked at ["The Printer's Grammar"](https://www.google.com/books/edition/The_Printer_s_Grammar/jjE5AAAAMAAJ?hl=en&gbpv=0)
 written in 1787 by John Smith. However, we will combine the modern rule together in this font for better web display,
 one of them maybe displayed at ["Design With FontForge"](http://designwithfontforge.com/en-US/Spacing_Metrics_and_Kerning.html).
 
-We firstly adjust the "Spacing" of letters, there are few points:
-1. Symmetric character have symmetric side bearing.
-2. f, g, j, p, ſ, y requires strong space before them.
-3. When d, f, l at end of word, strong space after them.
-4. 
+Few other necessary ligatures are added : `ſj`,`ſſj`, `st`, `Th`, `cp`, `et`, `sp`, `Qu`.Also with arrow `->` and `<-`.
 
-Few other necessary ligatures are added : `ſj`,`ſſj`, `st`, `Th`, `cp`, `et`, `sp`, `Qu`, also with arrow `->` and `<-`.
+I also added the support for french accent marks for example:
+1. la cédille: ç
+2. l’accent aigu: é
+3. l’accent circonflexe: â/ê/î/ô/û
+4. l’accent grave: à/è/ì/ò/ù
+5. le tréma: ë/ï/ü
+>According to Babelstrone, 
+> French and English typographic practice differs in one important respect : French (and also Spanish) typography uses a short s before the letter 'h', whereas English typography uses a long s.
+
 The modified Font name is "Yyld-Regular.otf" and "Yyld-Italic.otf", 
 both belongs to font family "Yyld". To support web load, we will generate woff files besides otf,
 as "Yyld-Regular.woff" and "Yyld-Italich.woff".
 and use it in this blog.
+
+>When generate new Fonts out, we'd better not replace the original otf file, it may cause ligature not be able to
+use. A new named file is recommended.
 
 Here are the table tests for special ligatures in this font:
 
@@ -362,3 +412,11 @@ Other ligatures:
 |------|------|-------|-------|------|-------|------|
 | ct   | cp   | fst   | fsp   | et   | The   | Qu   | 
 | *ct* | *cp* | *fst* | *fsp* | *et* | *The* | *Qu* | 
+
+Reassess the Rules:
+
+| `Rule 1,9,11` | `Rule 2` | `Rule 3`     | `Rule 4` | `Rule 5,6,7` | `Rule 8`   |
+|---------------|----------|--------------|----------|--------------|------------|
+| his           | clos'd   | satisfaction | offset   | husband      | crossstaff |
+| complains     | us'd     | successful   | off-set  | ask          |            | 
+| success       |          | transfuse    |          | cross-piece  |            | 

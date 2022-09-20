@@ -1,5 +1,5 @@
 ---
-title: Note about Next.js.
+title: Note about Next.js
 date: '2022-09-08'
 label: js/react/next
 ---
