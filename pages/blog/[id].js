@@ -32,15 +32,6 @@ const divContainer = styled.div`
 `
 
 const ContentContainer = styled.div`
-  //width: calc(100% - 100px);
-  //height: 100%;
-  //margin-left: auto;
-  //margin-right: auto;
-  //@media (min-width: 1080px) {
-  //  width: 1080px;
-  //  margin-left: auto;
-  //  margin-right: auto;
-  //}
 `
 
 const MarkDownHtmlColumn = styled.div`
@@ -51,7 +42,8 @@ const MarkDownHtmlColumn = styled.div`
   @media (min-width: 960px) {
     width: 960px;
     margin-left: auto;
-    margin-right: auto;
+    //margin-right: auto;
+    margin-right: 20%;
   }
 `
 
@@ -75,12 +67,12 @@ const TableOfContentColumn = styled.div`
 
   float: right;
   max-height: calc(100vh - 40px);
-  width: 200px;
+  width: 240px;
   background-color: white;
   color: #00BB33;
   border-radius: 15pt;
 
-  @media (max-width: 1400px) {
+  @media (max-width: 1220px) {
     display: none;
     margin-left: auto;
     margin-right: auto;
@@ -96,7 +88,7 @@ const TitleColumn = styled.div`
   @media (min-width: 960px) {
     width: 960px;
     margin-left: auto;
-    margin-right: auto;
+    margin-right: 20%;
   }
 `
 const TitleSubColumn = styled.div`

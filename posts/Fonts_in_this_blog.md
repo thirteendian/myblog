@@ -15,7 +15,7 @@ and of course plenty of re-encodings and adjustments are required.
 This article described my process of modifying the ligature font on this website.
 </p>
 
-## Four Types of Ligature in OpenType and CSS 
+## Four Types of Ligature in OpenType and CSS {#a1}
 
 There are normally four types of ligature:
 *common*, *discretionary*, *historical*, *contextual*. CSS by `font-variant-ligatures`.
@@ -33,9 +33,9 @@ The *contextual* ligatures referred to the adjustment of single characters with 
 font, "on", "ose" and many others may be adjusted to connect to each other. The contextual alternates should be designed
 to properly connect. OpenType value is `calt`, CSS mode is `contextual` and default activated.
 
-## Ligature Rules
+## Ligature Rules {#a2}
 
-### Long and Short s
+### Long and Short s {#a2-1}
 
 According to Boston
 1775's ["The Long List of Rules for the Long s"](https://boston1775.blogspot.com/2013/10/the-long-list-of-rules-for-long-s.html)
@@ -68,7 +68,7 @@ in [BabelStrone Blog's The Rules for Long S](https://www.babelstone.co.uk/Blog/2
 12. Long s is maintained in abbreviations such as ſ. for ſubſtantive, and Geneſ. for Geneſis (this rule means that it is
     practically impossible to implement fully correct automatic contextual substitution of long s at the font level)
 
-### R Rotunda and Rum Rounda
+### R Rotunda and Rum Rounda {#a2-2}
 
 R Rotunda/Rum Rounda (`Ꝛ` `ꝛ`),
 in unicode "UniA75A" and "UniA75B", 
@@ -81,14 +81,14 @@ we sum up the brief rules as followings:
 3. R rotunda "may" add on y
 4. Apostrophe will not break R Rotunda.
 
-## Wyld Font
+## Wyld Font {#b1}
 
 The font information can be checked
 at ["18 Century Ligatures and Fonts"](https://www.orbitals.com/self/ligature/ligature.pdf). The zip folder provided
 contains a `.dot` file with early ages embedded VBA Macro, and typically David Manthey's solution about replacing
 ligature letter to be unusual letter.
 
-### Extract the VBA Macro in dot file
+### Extract the VBA Macro in dot file {#b1-1}
 
 It is rare to find and VB sources and MS Office before 2003, I considered the tools to extract VBA directly from dot
 file. Olevba is an open-source Python shell, and it can be
@@ -143,7 +143,7 @@ following table showed all replacements he defined, from left to right, in order
 
 > `Ç>` might means letter `Ç` at the end of word, and `_s>` means letter `s` at the beginning of word.
 
-### David's Special Replacement
+### David's Special Replacement {#b1-2}
 
 Specific replacement happened to fit rules of Long and Short s:
 
@@ -155,7 +155,7 @@ Specific replacement happened to fit rules of Long and Short s:
 
 David didn't do any replacement about s in front of hyphen (Rule 7), as well as when this hyphen is omit (Rule 8)
 
-### David's Problematic Solution
+### David's Problematic Solution {#b1-3}
 
 However, we noticed that his replacement will cause special character such like `À` or `Ç` not be able to be used and
 searched anymore. Actually, according to Tex
@@ -163,19 +163,19 @@ StackExchange [Question 290261](https://tex.stackexchange.com/questions/290261),
 fit current Latex and CSS rules, the `.ttf` file need to be converted to `.otf`, the em size need to be adjusted, the
 ligature configuration in `otf` file(especially in his italic version `wyldi.ttf`).
 
-## Modifications based on Wyld
+## Modifications based on Wyld {#b2-1}
 
 The followings are the process of my modification of original wyld, with new standard OTF script and conditional
 ligature, I will name this font to be Yyld, for my future usage, and usage in this blog.
 
-### Convert TTF to OTF
+### Convert TTF to OTF {#b2-1}
 Before Generating new `otf` font in *FontForge*, a few adjustments are required.
 
 Goto `Element`->`Font Info` -> `General`, adjust `Em Size` to be less than 1000 value. Then goto `Element`->`Font Info`
 -> `OS/2`, adjust `OS/2 Version` to be larger than 1 value(can be auto). Finally, generate otf font by `File`
 ->`Generate Fonts`, under new pop up window, choose `OpenType(CFF)`, while under suitable folder click `Generate`.
 
-### Add Common Ligature
+### Add Common Ligature {#b2-3}
 
 The Ligature Substitution replace multiple glyph with one single glyph.
 
@@ -215,7 +215,7 @@ necessary to put `ffi/ffl` matching before `ff`
 
 Now we added f and long s related ligatures, and they are under `liga` LookupTable.
 
-### Add Long S Contextual Ligature
+### Add Long S Contextual Ligature {#b2-4}
 
 Note that until now, only f related normal ligatures were working without any conditional cases, as described above.
 In David's solution, he firstly converted all s to be ſ. However, we won't consider this reverse way, because that will
@@ -336,7 +336,7 @@ The fourth subTable rule in `calt` s to ſ LookupTable is
 At the end of the table, just as the previous f-related ligature,
 I created the Ligature Substitution Table to make all `ſ` related
 ligatures.
-### Add Long S Contextual Ligature of Compound sss
+### Add Long S Contextual Ligature of Compound sss  {#b2-5}
 I created a specific sss symbols with `ſſs` ligatured together.
 This ligature is at the least rank, if s is not ligatured with any of others,
 then this sss ligature is applied. This will make it possible to distinguish compound sss to fit (Rule 8).
@@ -346,7 +346,7 @@ with rules: If all three `ſ` is appeared together, then convert the last one to
 Also a third `liga` LookupTable is applied behind the previous ligature LookupTable,
 to apply `ſſs` ligature with least priority.
 
-### Adjust Italic Font
+### Adjust Italic Font  {#b2-50}
 
 Beside of regular type, there're also a version of italic Wyld font provided as name `Wyldi.ttf`.
 I applied the similar Ligature rules as previously designed. To generate the same font with different style name,
@@ -354,17 +354,46 @@ we need to change the font name to be the same, but different style name. Goto `
 change `Fontname` to be "Yyld-Regular" or "Yyld-Italic", correspondingly to the `Weight` regular and italic.
 but maintain the `Family Name` to be the same.
 
-### Test Without Exporting
+### Test Without Exporting  {#b2-6}
 To test the result, one can use `Metrics`->`New Metrics Window` to type and
 test ligature.
-### Clockwise and CounterClockwise
+### Clockwise and CounterClockwise  {#b2-7}
 Some circle part should be white background but black filled, select the circle, `Element`->`Clockwise` will solve this problem.
 
-### No Contextual Rule supported in Safari
+### No Contextual Rule supported on iPhone {#b2-8}
 
-Unfortunately, the contextual substitution on safari.
+Unfortunately, the contextual substitution on iPhone is not supported.
 
-### Final Grain
+### Spacing and Kerning {#b2-9}
+Several rules should be applied to make font looks better, for spacing, not always the same side bearing
+means good-looking. In this font, we adjust all letter to be left closed to 0, 
+thus the only modification will be "how they close to 0" and their right side bearing.
+
+1. 'A' 'H' 'I' 'M' 'N' 'O' 'T' 'U' 'V' 'W' 'X' 'Y' 'o' 'v' 'w' 'x' should have symmetric side bearings(Not in our case,
+it should say same right side feeling, followings are the same).
+By clicking one slot, and under `Metrics`, there are few tools to adjust the width.
+However, one cannot set all symmetric letter with same total width, for example "HH"'s spacing may look different than 
+"OO"'s because of "Optical Illusion". One can check through all possible string using 
+tools [String Maker by Nina Stössinger](http://www.ninastoessinger.com/stringmaker/index.php)
+2. Adjust `o` and `n` together using string to make the best spacing(and height)
+3. `o` with left `c`, `d`, `e`, and `q` for their left position.
+4. `o` with right `b`, `p` for their right bearing.
+5. `n` with right `h`,`m` for their right bearing
+6. `n` with left `b`, `h`, `k`, `m`, `p`, `r` for their left position
+7. Adjust all others using combination of above letters.
+
+Apart from spacing, few combination of capital letter with small letter paris need to kerning,
+or the edge of Capital letter will cause ugly large space between it and small letter. To 
+adjust kerning, `Element`->`Font Info`->`Lookups`->`GPOS`->`Add Lookup`->`Type: Pair Position(Kerning`.
+Add css feature `kern`. Then add subTables just as all previous works. We may choose `Use a matrix of kerning classes`
+to adjust a set of slot pairs, all parameters may leave unchanged. Choose `T` and `o` relatively on top and bottom
+window, after clicking `ok`, a new dialogue will pop up.
+
+1. Start from the adjust-needed pair `WA`,`Wa`, `To` and `Av` from `Metrics`->`New Metrics Window` , It support dragging way of adjust all kerning together directly,
+   after setting all adjustable pair, one may try to finally adjust individual one by one.
+2. Adjust all others
+
+### Final Grain {#b2-10}
 
 More historical rules can be checked at ["The Printer's Grammar"](https://www.google.com/books/edition/The_Printer_s_Grammar/jjE5AAAAMAAJ?hl=en&gbpv=0)
 written in 1787 by John Smith. However, we will combine the modern rule together in this font for better web display,
@@ -391,7 +420,7 @@ use. A new named file is recommended.
 
 Here are the table tests for special ligatures in this font:
 
-F related ligatures:
+Common Ligature(liga): F related ligatures:
 
 | `fi` | `fj` | `fl` | `ff` | `ffi` | `ffj` | `ffl` |
 |------|------|------|------|-------|-------|-------|
@@ -399,14 +428,14 @@ F related ligatures:
 | *fi* | *fj* | *fl* | *ff* | *ffi* | *ffj* | *ffl* |
 
 
-S related ligatures:
+Contextual Ligature(calt) S related ligatures:
 
 | `sh` | `si` | `sl` | `st` | `ss` | `ssf` | `ssb` | `ssk` | `ss-` | `ss'` | `fss` | `fssb` |
 |------|------|------|------|------|-------|-------|-------|-------|-------|-------|--------|
 | sh   | si   | sl   | st   | ss   | ssf   | ssb   | ssk   | ss-   | ss'   | fss   | fssb   |
 | *sh* | *si* | *sl* | *st* | *ss* | *ssf* | *ssb* | *ssk* | *ss-* | *ss'* | *fss* | *fssb* |
 
-Other ligatures:
+Discretionary Ligatures(dlig):
 
 | `ct` | `cp` | `fst` | `fsp` | `et` | `The` | `Qu` | 
 |------|------|-------|-------|------|-------|------|

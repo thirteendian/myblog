@@ -1,9 +1,9 @@
-
 @font-face {
     font-family: "yyld";
-    src:url("../styles/font/Yyld-Regular.woff");
+    src: url("../styles/font/Yyld-Regular.woff");
     font-style: normal;
 }
+
 @font-face {
     font-family: "yyld";
     src: url("../styles/font/Yyld-Italich.woff");
@@ -12,7 +12,7 @@
 
 @font-face {
     font-family: "goudy";
-    src:url("../styles/font/GoudyInitialen.ttf");
+    src: url("../styles/font/GoudyInitialen.ttf");
     font-style: normal;
 }
 
@@ -22,17 +22,18 @@
     src: url("../styles/font/librecaslon.ttf");
     font-style: italic;
 }
+
 html,
 body {
     padding: 0;
     margin: 0;
     background-color: #111111;
-    font-family: yyld,  caslon, "Times New Roman", -apple-system ,serif;
+    font-family: yyld, caslon, "Times New Roman", -apple-system, serif;
     /*Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;*/
     font-variant-ligatures: common-ligatures historical-ligatures discretionary-ligatures contextual;
-    -moz-font-feature-settings: "calt" ;
-    -webkit-font-feature-settings: "calt" ;
-    font-feature-settings: "calt" ;
+    -moz-font-feature-settings: "liga" 1, "calt" 1;
+    -webkit-font-feature-settings: "liga" 1, "calt" 1;
+    font-feature-settings: "liga" 1, "calt" 1;
 }
 
 a {
@@ -44,17 +45,18 @@ a {
     box-sizing: border-box;
 }
 
-p{
-    font-size:x-large;
+p {
+    font-size: x-large;
     font-feature-settings: inherit;
 }
+
 ol {
     font-size: x-large;
-    font-variant-ligatures:inherit;
+    font-variant-ligatures: inherit;
 }
 
 
-h2{
+h2 {
     font-size: x-large;
     font-weight: bold;
     font-variant-ligatures: common-ligatures historical-ligatures discretionary-ligatures contextual;
@@ -62,14 +64,28 @@ h2{
     color: white;
 
 }
-h3{
+
+h3 {
     font-size: x-large;
     font-variant-ligatures: common-ligatures historical-ligatures discretionary-ligatures contextual;
     color: firebrick;
 }
 
-.intro::first-letter{
-    font-family: goudy,serif;
+h2, h3 {
+    scroll-margin-top: 16px;
+}
+
+@supports (-webkit-hyphens: none) {
+    h2, h3 {
+        padding-top: 16px;
+        margin-top: -16px;
+    }
+}
+
+
+
+.intro::first-letter {
+    font-family: goudy, serif;
     font-size: 5.5rem;
     font-weight: normal;
     color: firebrick;
@@ -81,24 +97,25 @@ h3{
 }
 
 
-th,td{
+th, td {
     border: 1px solid black;
     padding: 7px;
 }
-table{
+
+table {
     text-align: center;
     vertical-align: middle;
     font-size: x-large;
 }
-thead th{
+
+thead th {
     width: 10%;
 }
 
-code{
+code {
     background-color: #cccccc;
     border-radius: 5px;
 }
-
 
 
 /*@media (prefers-color-scheme: dark) {*/
@@ -134,7 +151,8 @@ code{
     color: #777;
     font-size: 12px;
 }
-.title_frame_picture{
+
+.title_frame_picture {
     -webkit-filter: invert(1);
     filter: invert(1);
 }

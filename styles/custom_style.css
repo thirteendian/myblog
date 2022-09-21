@@ -64,3 +64,25 @@ blockquote a:hover{
 blockquote em{
     font-style: italic;
 }
+
+
+nav{
+    max-height: calc(100vh - 40px);
+    overflow: auto;
+    background-color: gray;
+}
+
+nav a{
+    text-decoration: none;
+    color: white;
+}
+
+nav li.active{
+    font-weight: bold;
+    color: firebrick;
+
+}
+nav a:hover{
+    font-weight: bold;
+    color: firebrick;
+}

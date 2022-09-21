@@ -1,9 +1,49 @@
-import React from 'react';
+import React, {useState} from 'react';
+import useHeadingsData from "../useHeadingsData";
+import useIntersectionObserver from "../useIntersectionObserver";
 
-function Index(props) {
+const Headings = ({headings, activeId}) => (
+    <ul>
+        {headings.map((heading) => (
+            <li key={heading.id} className={heading.id===activeId ? "active":""}>
+                <a href={`#${heading.id}`}
+                   onClick=
+                       {(e) => {
+                           e.preventDefault();
+                           document.querySelector(`#${heading.id}`).scrollIntoView({
+                               behavior: "smooth"
+                           });
+                       }
+                       }
+                >{heading.title}</a>
+                {heading.items.length > 0 && (
+                    <ul>
+                        {heading.items.map((child) => (
+                            <li key={child.id} className={heading.id===activeId ? "active":""}>
+                                <a href={`#${child.id}`}
+                                   onClick={(e) => {
+                                       e.preventDefault();
+                                       document.querySelector(`#${child.id}`).scrollIntoView({
+                                           behavior: "smooth"
+                                       });
+                                   }}
+                                >{child.title}</a>
+                            </li>
+                        ))}
+                    </ul>
+                )}
+            </li>
+        ))}
+    </ul>
+);
+
+function Index() {
+    const [activeID, setActiveID] = useState();
+    const {nestedHeadings} = useHeadingsData();
+    useIntersectionObserver(setActiveID);
     return (
-        <nav>
-            Hello!
+        <nav aria-label="Table of contents">
+            <Headings headings={nestedHeadings} activdID={activeID}/>
         </nav>
     );
 }
