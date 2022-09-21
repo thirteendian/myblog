@@ -92,6 +92,7 @@ const TitleColumn = styled.div`
   height: 100%;
   width: 100%;
   border-radius: 15pt;
+  font-size: xxx-large;
   @media (min-width: 960px) {
     width: 960px;
     margin-left: auto;

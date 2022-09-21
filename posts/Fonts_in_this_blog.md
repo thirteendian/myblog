@@ -419,4 +419,4 @@ Reassess the Rules:
 |---------------|----------|--------------|----------|--------------|------------|
 | his           | clos'd   | satisfaction | offset   | husband      | crossstaff |
 | complains     | us'd     | successful   | off-set  | ask          |            | 
-| success       |          | transfuse    |          | cross-piece  |            | 
+| success       |          | transfuse    |          | cross-piece  |            |

@@ -29,7 +29,10 @@ body {
     background-color: #111111;
     font-family: yyld,  caslon, "Times New Roman", -apple-system ,serif;
     /*Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;*/
-    font-variant-ligatures: common-ligatures historical-ligatures discretionary-ligatures contextual;
+    font-variant-ligatures: common-ligatures historical-ligatures discretionary-ligatures no-contextual;
+    -moz-font-feature-settings: "calt" 0;
+    -webkit-font-feature-settings: "calt" 0;
+    font-feature-settings: "calt" 0;
 }
 
 a {
