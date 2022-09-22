@@ -1,0 +1,232 @@
+---
+title: Javascript Basic
+subtitle: About 
+date: '2022-08-08'
+label: js
+---
+
+## `__proto__` & `prototype` & `constructor` {#__proto__prototypeconstructor}
+
+For analysis each question, three point:
+
+1. (`constructor`)function's constructor use which function
+2. (`prototype`)function is inherited from which object
+3. (`__proto__`)function has parent reference point to which object
+
+Note 2. & 3. are describing same thing.
+
+1. **The `function(object).prototype` is what we write as an Function(Object)'s defination.**
+   Which put all method that is ready to be inherited by other class, whereby calling this function to instantiate.
+
+
+2. The **constructor** is in `function(object).prototype` as
+   `function(object).prototype.constructor()`
+   provide the method to instantiate a `function(object)`.
+
+3. The instantiation that inherited from `function.prototype`
+   have referece `__proto__` point to `function.prototype`. Similar to Java Object, all objects has `__proto__`
+   reference point to
+   `Object.prototype`.
+4. Similar to Java, `Object.prototype` contains many predefined method such as `toString()`.
+5. Since `f Function()` is also considered to be constructed, and it's constructor is in `f Function.prototype`. That is
+   to say, `f Function.prototype.constructor` is used as all function's constructor, that is construct by expression "
+   var example = function(){}".
+
+_**So when we say "use function as constructor", means use Function.prototype.constructor()!!!**_
+
+For example, suppose define function `Parent()`, using constructor `Function.prototype.constructor()`, in another word,
+function `Parent` inherited from object `Function.prototype`, and `Parent` has reference `Parent.__proto__`
+point to object `Function.prototype`. Also, according to the previous analogy, all function's prototype is inherited
+from `Object.prototype`, so does `Function.prototype`.
+
+```js
+var Parent = function () {
+}
+//Parent()'s constructor function is Function.prototype.constructor()
+//Parent is inherited from Function.prototype
+//Parent has reference Parent.__proto__ point to Function.prototype
+//Function's constructor function is Function.prototype.constructor().
+//Function is inherited from Function.prototype
+//Function has reference Function.__proto__ point to Function.prototype
+//Function.prototype's constructor function is itself
+//Function.prototype is inherited from Object.prototype
+//Function.prototype has reference Function.prototype.__proto__ point to Object.prototype
+//Object's constructor function is f Function.prototype.constructor()
+//Object is inherited from Function.prototype
+//Object has reference Object.__proto__ point to Object.prototype
+//Object.prototype's constructor is NULL
+//Object.prototype is inherited from NULL
+//Object.prototype has referemce Object.prototype.__proto__ point to NULL
+//* Note also Parent() is only a function here.
+```
+
+suppose object `p1` construct using constructor `Parent()`, in another word, object`p1()` inherited from
+object `Parent.prototype`.
+`p1` has reference `p1.__proto__`to parent object `Parent.prototype`.
+
+```js
+var p1 = new Parent();
+// p1's constructor is Parent.prototype.constructor()
+// p1 is inherited from Parent.prototype
+// p1 has reference p1.__proto__ to Parent.prototype
+```
+
+If one want to put value not in prototype but in it's own instantiation, a single assignment to an variable is
+necessary:
+
+```js
+class A
+
+()
+{
+    constructor()
+    {
+    }
+    a = 1;
+//constructor will construct a=1 in new instantiation
+//but we cannot find a=1 in instantiation.__proto__
+//(or A.prototype)
+}
+
+```
+
+Note that the following map when say function(object) constructor, that means use it's function(object)
+.prototype.constructor!
+
+![](/figure/Note_JS_BASIC_img1.webp)
+
+## `this` in JS {#jsbasic-2}
+
+To justify `this` referece.
+
+In no-strict mode, undefined normally be `window`; In strict mode is undefined.
+
+* Inside of function EventHandler, is the element.
+* Outside of function, strict/no-strict, is global object. For example, window
+* Inside of function, no-strict, is global object. For example, window.
+* Inside of function, strict, is undefined. **Note Babel will translate component function to be strict mode**
+* Inside of object, is object. Not include static methods.
+* As object's method, is the object.(Normally object's method is set to be strict automatically, thus is undefined)
+* As of function(object)'s constructor, is new object(instantiation). If have return, the new object value is defined by
+  return
+* As object's own method(not in prototype),
+  **defined by "()=>"**, is outside scope(the object instantiation)
+* Can be changed by bind()
+
+An example about object's method
+
+```js
+class A {
+    constructor(...) {...
+    }
+
+    render(...) {...
+    }
+
+    example(...) {
+        console.log(this);
+    }
+}
+
+//Call by instantiation
+// `this` is point to the instantiation
+const test1 = new A(...)
+test1.example()
+
+//Call directly
+//object method is in heap
+//(create another reference in stack to class method in heap)
+//`this` is undefined
+//because object's method will open strict mode automatically
+const test2 = test1.example()
+test2()//undefined
+```
+
+To solve this problem, we can bind the function's to it's instantiation, or use "()=>" to define the function as
+following:
+
+```js
+class A {
+    constructor(...) {
+    ...
+        this.example2 = this.example1().bind(this);
+    }
+
+    render(...) {...
+    }
+
+    example1(...) {
+        console.log(this);
+    }
+
+    //this is not a function defination
+    //but a assignment expression
+    //this can not be tracked by instantiation.__proto__
+    example3 = () => {
+        console.log(this);
+    };
+}
+
+//Call directly
+//object method is in heap
+//(create another reference in stack to class method in heap)
+//`this` is class A
+//Because this.example's this has been binded to
+//the instantiation.
+const test2 = new A().example2()
+test2()//class A
+
+//Note the bind method is still example1,
+//since righto this.example2 is get from prototype,
+//and bind() return a new function with new bind of this,
+//so it's acutally get a "modified" example1, and 
+//give it to prototype's example2.
+//When new A() is called, 
+// example2 is constructed out by constructor from prototype
+
+
+//example is an instantiation method, defined by ()=>
+//so "this" is pointed to outsider scope which is the 
+//instantiation 
+const test3 = new A().example3()
+test3()//class A
+
+
+```
+
+**Note that object do not have it's constructor, the constructor is on `object.prototype`, while methods is defined
+in `object.prototype` as well. Thus for expression "this.example2 = this.example1().bind(this);", the right side is
+fetching this(`object.prototype`).example1 method from `object.prototype`, the left side is construct this(`object`) as
+a new object with new method `example2()`**
+
+## Closure {#jsbasic-3}
+
+`var` used to create function scope variable inside a function, if one does not use `var` to create variable, actually
+an Global scope variable is created.
+
+Java's if else blocks does not create scope for `var`, thus if create statement with bracket blocks,
+`var` inside actually create Global scope variable. On the other hand ES6 use `let` and `global` to create block scope
+variable.
+
+```js
+functionO()
+{
+    var variable;
+    return functionI()
+    {
+        return variable;
+    }
+}
+functionI_instance = functionO();
+```
+
+The function will maintain reference to it's _lexical environment_, when functionI is inside functionO, it's lexical
+environment is functionO's lexical environment, thus functionI will maintain reference to all **block scope** variable
+that defined in functionO. Pratically, we will return functionI inside of functionO to access functionO even functionO
+is died. In anther word, keep FunctionO's variable keep in memory.
+
+Note that to delete closure function variable to prevent memory leaking.
+
+
+
+

@@ -7,6 +7,7 @@ import TechStackFlowNode from "../../components/TechStackFlowNode";
 import styled from "styled-components";
 import TableOfContent from "../../components/TableOfContent";
 import useHeadingsData from "../../components/useHeadingsData";
+import Link from "next/link";
 
 
 export async function getStaticPaths() {
@@ -59,7 +60,7 @@ const TitleColumn = styled.div`
   display: block;
   height: 100%;
   width: 100%;
-  
+
   border-radius: 15pt;
   font-size: xxx-large;
   @media (min-width: 1220px) {
@@ -141,7 +142,7 @@ const TableOfContentColumn = styled.div`
   overflow: auto;
   display: block;
   position: fixed;
-  
+
   margin-left: 1020px;
   margin-right: auto;
 
@@ -152,12 +153,12 @@ const TableOfContentColumn = styled.div`
   border-radius: 15pt;
 
   @media (max-width: 1220px) {
-    display: ${props=>props.active?"block":"none"};
+    display: ${props => props.active ? "block" : "none"};
     //direction: rtl;
     margin-left: 74%;
     margin-right: auto;
   }
-  @media (pointer:none), (pointer:coarse) {
+  @media (pointer: none), (pointer: coarse) {
     margin-left: auto;
     margin-right: auto;
   }
@@ -169,23 +170,51 @@ const TableOfContentButton = styled.button`
   position: -webkit-sticky; /* For Safari */
   top: 5px; /* How far down the page you want your ToC to live, this is trigger*/
 
-
   float: right;
-  height: 40px;
+  height: 30px;
   border-radius: 15px;
   background-color: darkred;
   color: white;
   font-size: 16px;
   display: none;
   @media (max-width: 1220px) {
-    display: flex;
+    display: block;
   }
   //cursor:pointer;
-  &:hover{
+  &:hover {
     background-color: firebrick;
+  }
+
+  @media (pointer: none), (pointer: coarse) {
+    float: left;
   }
 `
 
+const BacktoHomeButton = styled.button`
+  z-index: 1;
+  margin-right: 0;
+  position: sticky;
+  position: -webkit-sticky; /* For Safari */
+  top: 45px;
+  float: left;
+  height: 30px;
+
+  border-radius: 15px;
+  background-color: darkred;
+
+
+  color: white;
+  font-size: 16px;
+  display: block;
+
+  &:hover {
+    background-color: firebrick;
+  }
+
+  @media (pointer: none), (pointer: coarse) {
+    float: right;
+  }
+`
 
 export default function Post({postData}) {
     const onClickNodeHandler = () => {
@@ -218,7 +247,7 @@ export default function Post({postData}) {
     ];
     const [nodes, setNodes] = useState(initialNodes);
     const [edges, setEdges] = useState(initialEdges);
-    const [tocactive,setTocActive] = useState(false);
+    const [tocactive, setTocActive] = useState(false);
 
     const nodetypes = useMemo(() => ({techStackFlowNode: TechStackFlowNode}), [])
     const onNodesChange = useCallback(
@@ -239,9 +268,19 @@ export default function Post({postData}) {
                 {/*    </ReactFlow>*/}
                 {/*</div>*/}
                 <ContentAndTableOfContentContainer>
-                    <TableOfContentButton onClick={()=>{setTocActive(!tocactive)}} onPress={()=>{setTocActive(!tocactive)}}>
+
+
+                    <TableOfContentButton onClick={() => {
+                        setTocActive(!tocactive)
+                    }} onPress={() => {
+                        setTocActive(!tocactive)
+                    }}>
                         ToC
                     </TableOfContentButton>
+
+                    <Link href="/blog"><BacktoHomeButton>Home</BacktoHomeButton></Link>
+
+
                     <TableOfContentColumn active={tocactive}>
                         <TableOfContent/>
                     </TableOfContentColumn>
@@ -262,7 +301,9 @@ export default function Post({postData}) {
                     </TitleColumn>
 
                     <ContentContainer>
-                        <MarkDownHtmlColumn onClick={()=>{setTocActive(false)}}>
+                        <MarkDownHtmlColumn onClick={() => {
+                            setTocActive(false)
+                        }}>
                             <MarkDownHtmlContent dangerouslySetInnerHTML={{__html: postData.contentHtml}}/>
                         </MarkDownHtmlColumn>
                     </ContentContainer>

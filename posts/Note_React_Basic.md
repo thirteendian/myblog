@@ -1,0 +1,186 @@
+---
+title: React Basic
+date: '2022-08-10'
+label: js/react
+---
+
+## Spring Cross Origin {#SpringCrossOrigin}
+
+[React.js and Spring Data REST](https://spring.io/guides/tutorials/react-and-spring-data-rest/)
+We want frontend and backend to be seperated, and communicate with JSON.
+
+however, for example, the default react origin is "localhost:3000", but
+the spring controller's origin is mount on "localhost:12345"(configured in myproporities)
+
+We need package:
+>org.apache.httpcomponents.httpclient
+
+And add allow cross origin annotation in front of controller
+
+```java
+@CrossOrigin(origins = "http://localhost:3000")
+@GetMapping(...)
+        ...
+```
+## Essential library {#EssentialLibrary}
+
+babel.min.js has two functionality:
+
+* ES6 ==> ES5
+* JSX ==> JS
+
+react.development.js is React Core
+
+react-dom.development.js is React extension for Dom
+
+For react component, constructor is called once during initialization, instantiation is got by react, everytime when
+state is changing, spring will call render once().
+
+To avoid the changing of `this` in object method, one can defined the method by assignment `()=>`.
+
+`react.development.js` and `babel.min.js` combined has several grammer sugar, for example, JS does not support the
+Spread syntax(...)
+to be used directly(Only in ReactDom.render to give component label), but react support in JS
+
+```js
+var p = new A();
+console.log(...p)
+//error, since ...p is illegal
+
+var d = {...p, additional: "something"}
+//correct, since grammer of deep copy an object
+```
+
+in JSX+react
+
+```jsx
+console.log(...p)
+//correct, since react support the usage of ... directly
+//BUT no output
+//React only support label to use ... directly
+```
+
+Note that to comment on jsx return command of structure, we need to translate to js first by `()` then use JS normal way
+to comment it
+
+```jsx
+render()
+{
+    return (
+        (/*<input ref={(currNode)=>{this.refinput = currNode}}*/)
+        //now it is commentted successfully
+    )
+```
+
+## Three essential properties {#Threeessentialproperties}
+
+For refs, It's not recommended to use too much. The input parameter is the current element node it self, there are three ways:
+```jsx
+////////////////////////
+//For Arrow function way
+class example extends React.Component {
+    render() {
+        return (
+            <input ref={(currNode) => {
+                this.refinput = currNode
+            }}/>
+            //here the currNode is <input...> it self    
+            //we now add this ref to this class instantiation as refinput
+            //And this ()=>{} function will be called twice when render() the page
+            //because each time it's a new function
+            //react will send null first to make sure it's clear
+        )
+    }
+}
+
+reactDOM.render(<example/>, document.getElementById('test'))
+////////////////////
+//Bound this function in class
+class example extends React.Component {
+    refFunction = (currNode) => {
+        this.example = currNode;
+    }
+
+    render() {
+        return (
+            <input ref={this.refFunction}/>
+        )
+    }
+}
+
+reactDOM.render(<example/>, document.getElementById('test'))
+
+//////////////////
+//use createRef
+class example extends React.Component {
+    //create a container get all refs
+    //but this container will be covered if the label name is the same
+    //So we need to singly call createRef()
+    refFunction = React.createRef()
+    refFunction1 = React.createRef()
+    render() {
+        return (
+            <input ref={this.refFunction}/>
+            <input ref={this.refFunction1}/>
+        )
+    }
+}
+
+reactDOM.render(<example/>, document.getElementById('test'))
+```
+
+If the event is on the element that call ref itself, the ref is not necessary to define, since
+render will return `event` to the same name function as input, and we can get the element by`event.target`
+
+## Event {#Event}
+
+The Event process
+...
+
+Event is rewrite by React(for example, onclick is "onClick"" in react),
+and give the event to the very outsider element.
+
+## Diff algorithm {#Diffalgorithm}
+
+Virtual DOM use label as a comparable minimum element. And compare label from outside to inside.
+
+
+
+For react, where accept the data, where need to define data method.
+
+
+For CORS problem, is able to send, but not possible to receive
+The proxy is running on the proxy server is the same port as client,
+but do not have ajax wall.
+
+## Fetch and sync await {#Fetchandsyncawait}
+Separation of Concerns, Fetch and XHR(HMLHttpRequest):
+XHR and it's related method(jQuary & Axios) is not suitable for SoC.
+Fetch will seperate XHR connect and request data into few steps. May combine
+await sync function to curry the responce info and try catch to solve throw error
+
+```jsx
+//async function
+async ()=>{
+    try(){
+    const response = await fetch("/url")//step 1 connect Promise
+        //response is the first step pending Promise
+    const data = await response.json()//step 2 fetch data Promise
+    console.log(data)
+    }catch (e) {
+        //solve error that throwed by above two steps
+    }
+}
+```
+
+## Router {#Router}
+
+SPA single page application through router.
+SPA urls(actually called path, because do not have actual html page url)
+now corresponding to multiple Component(or Functions).
+* Backend Router, key is path, value is function, like spring controller
+* Frontend Router(Hash Router with #), key is component. Corresponding to browser's history(BOM's history).
+
+
+
+## Spring Authentication(JWT) {#SpringAuthenticationJWT}

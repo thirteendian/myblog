@@ -13,6 +13,9 @@ const InsideBoarder = styled.section`
   position: relative;
   background-color: white;
   width: calc(100% - 100pt);
+  @media (pointer: none), (pointer: coarse) {
+    width: 100%;
+  }
 `;
 
 const StackFlowContainer = styled.div`
@@ -22,7 +25,6 @@ const StackFlowContainer = styled.div`
   margin-right: auto;
   @media (pointer: none), (pointer: coarse) {
     height: 300px;
-
   }
 `
 
@@ -56,7 +58,9 @@ const RightSection = styled.section`
   background-color: black;
   width: 80%;
   @media (pointer: none), (pointer: coarse) {
-    width: 150%;
+    margin-left: auto;
+    margin-right: auto;
+    width: 120%;
   }
   //@media (min-width: 1220px) {
   //  width: 976px;
@@ -110,6 +114,7 @@ export async function getStaticProps({params}) {
         },
     };
 }
+
 const NavigationBar = styled.div`
   margin: auto;
   padding-left: 10px;
@@ -150,6 +155,7 @@ const NavigationLabel = styled.label`
   margin-bottom: auto;
   height: 100%;
 `
+
 function Blog(props) {
     //Settings for StackFlow
     const onClickNodeHandler = (nodeName) => {

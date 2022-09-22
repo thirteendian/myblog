@@ -52,6 +52,10 @@ a {
 p {
     font-size: x-large;
     font-feature-settings: inherit;
+    position: relative;
+}
+img{
+    width: 100%;
 }
 
 ol {
@@ -104,12 +108,15 @@ h2, h3 {
 th, td {
     border: 1px solid black;
     padding: 7px;
+
 }
 
 table {
     text-align: center;
     vertical-align: middle;
     font-size: x-large;
+    display: block;
+    overflow: auto;
 }
 
 thead th {
@@ -119,6 +126,9 @@ thead th {
 code {
     background-color: #cccccc;
     border-radius: 5px;
+    position: relative;
+    overflow: auto;;
+    word-break: break-word;
 }
 
 

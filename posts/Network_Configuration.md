@@ -10,4 +10,4 @@ Of Goal of Internet Designing, Of DHCP/DNS Router, Of Security/Authentication
 
 </p>
 
-## Router Configuration
+## Router Configuration {#RouterConfiguration}

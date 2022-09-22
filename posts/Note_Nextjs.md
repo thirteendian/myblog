@@ -1,20 +1,24 @@
 ---
-title: 
+title: Next.js Usage In This Blog
 date: '2022-09-08'
 label: js/react/next
 ---
-# Table of Contents
 
-1.  [Create React App](#org4dd43f1)
-2.  [Why Next.js](#org6be6926)
-    1.  [The usage of `Next.js` elements](#orgf0adf1f)
-    2.  [The usage of `meta`](#org2284765)
+<p class="intro">
+After using single-page application,
+the browser will not fetch the content inside the script of React,
+event it will very intelligently analysis the whole document,
+because the asychronized part will always be missed.
+One of the pre-rendering technique Server-Side Rendering(SSR) should be used, generate html on each request.
+Another one is called Static Generation(SG), generate html when build,
+note that this technique will also be used in developing mode.
 
+`next.js` served as a suitable light React SSR/SG framework. When a page is updating frequently,
+one should choose SSR rather than SG. Otherwise should always try to use SG, for example,
+if blog page was written ahead, a SG mode should be used.
+</p>
 
-
-<a id="org4dd43f1"></a>
-
-# Create React App
+## Create React App {#CreateReactApp}
 
 After synchronizing git repo, start react app using tools
 
@@ -36,19 +40,7 @@ All packages that have been installed in this project can be checked in `package
 
 <a id="org6be6926"></a>
 
-# Why Next.js
-
-After using single-page application,
-the browser will not fetch the content inside the script of React,
-event it will very intelligently analysis the whole document,
-because the asychronized part will always be missed.
-One of the pre-rendering technique Server-Side Rendering(SSR) should be used, generate html on each request.
-Another one is called Static Generation(SG), generate html when build,
-note that this technique will also be used in developing mode.
-
-`next.js` served as a suitable light React SSR/SG framework. When a page is updating frequently,
-one should choose SSR rather than SG. Otherwise should always try to use SG, for example,
-if blog page was written ahead, a SG mode should be used.
+## Server-side Rendering {#Server-sideRendering}
 
 To make sure all dependencies will be resolved first before pre-rendering,
 an async function `getStaticProps` should be called to generate global props,
@@ -63,7 +55,7 @@ and pass it to page rendering function that need those props
 
 <a id="orgf0adf1f"></a>
 
-## The usage of `Next.js` elements
+## The usage of `Next.js` elements {#TheusageofNextjselements}
 
 Most of the replacements of original React elements such like `next/link`, `next/head` or `next/image`,
 using next's logic to optimize the web page.
@@ -89,5 +81,5 @@ they should be included in this file
 
 <a id="org2284765"></a>
 
-## The usage of `meta`
+## The usage of `meta` {#Theusageofmeta}
 

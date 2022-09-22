@@ -1,5 +1,5 @@
 ---
-title: Note about Emacs Org-mode
+title: Emacs Org-mode
 date: '2022-09-05'
 label: emacs
 ---
@@ -23,11 +23,7 @@ label: emacs
 
 [//]: # (5.  [Draw Ditaa image]&#40;#orgc5ce1f0&#41;)
 
-
-
-<a id="org6b6bf22"></a>
-
-# Title {#id-title}
+## Title {#id-title}
 
 The first paragraph is not indented.
 <sup><a id="fnr.1" class="footref" href="#fn.1" role="doc-backlink">1</a></sup>
@@ -51,7 +47,7 @@ Parent level `C-c C-u`;
 
 <a id="org924b17d"></a>
 
-# Rich Text {#id-RichText}
+## Rich Text {#id-RichText}
 
 Like markdown '`**`' is for **bold**; '`/italic/`' is for *italic*; '`_underlined_`' is for <span class="underline">underline</span>; `=verbatim=` is for `verbatim`; `~code~` is for `code`; `+strikethrough+` is for <del>strikethrough</del>.
 
@@ -60,12 +56,12 @@ The footnote is marked as `[fn::<body>]` or seperate line `[fn:A1] [fn:A1]<body>
 
 <a id="org83a4e74"></a>
 
-# Code Block {#id-CodeBlock}
+## Code Block {#id-CodeBlock}
 
 
 <a id="org8b43609"></a>
 
-## Init Setup {#id-InitSetUp}
+### Init Setup {#id-InitSetUp}
 
 Before inserting code blocks, emacs should enable the corresponding language while loading emacs
 ```elisp
@@ -103,7 +99,7 @@ Now in export menu we can find mark down support.
 
 <a id="org252e4b1"></a>
 
-## Block Input {#id-blockInput}
+### Block Input {#id-blockInput}
 
 Like latex, the code blocks source code looks like:
 
@@ -144,7 +140,7 @@ For inline code `~code~` is for `code`;
 
 <a id="orga2f667c"></a>
 
-## Latex setup {#id-LatexSetup}
+### Latex setup {#id-LatexSetup}
 
 For exporting with package `{mint}` in latex, as refer to CTAN, mint requires python and Pygments are installed.
 
@@ -188,7 +184,7 @@ For changing mint Pygments font color style
 
 <a id="org6d79c98"></a>
 
-# Export {#id-export}
+## Export {#id-export}
 
 Insert export default setting: C-c C-e #, input "default";
 Insert export latex settting: C-c C-e #, input "latex".
@@ -203,7 +199,7 @@ o for export tex + pdf and open
 
 <a id="orgc5ce1f0"></a>
 
-# Draw Ditaa image {#id-ditaa image}
+## Draw Ditaa image {#id-ditaa image}
 
 Ditaa is no longer distributed with emacs.
 

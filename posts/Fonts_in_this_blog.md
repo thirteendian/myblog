@@ -1,5 +1,5 @@
 ---
-title: The Font In This Blog. Font Ligature, Long S And FontForge
+title: Font In This Blog. Font Ligature, Long S And FontForge
 subtitle: The modifications of Caslon style font Wyld
 date: '2022-09-16' 
 label: blog

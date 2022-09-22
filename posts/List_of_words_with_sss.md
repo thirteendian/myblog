@@ -4,6 +4,11 @@ date: '2022-09-16'
 label: blog
 ---
 
+The following content contains the examples of all ss-s compound in English, French and German.
+
+
+
+
 1. List of `ss-s` pattern closed compound word in English/French:  
    pissslit, crosssell, crossshot, crosssill, crosssold, crossstep, flosssilk, jossstick, pissslits, rossshire,
    crosssells, crossshots, crosssills, crossspall, crossstaff, crossstone, flosssilks, josssticks, burgessship,
