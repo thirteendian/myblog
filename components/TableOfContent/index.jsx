@@ -5,7 +5,7 @@ import useIntersectionObserver from "../useIntersectionObserver";
 const Headings = ({headings, activeId}) => (
     <ul>
         {headings.map((heading) => (
-            <li key={heading.id} className={heading.id===activeId ? "active":""}>
+            <li key={heading.id} className={heading.id === activeId ? "active" : ""}>
                 <a href={`#${heading.id}`}
                    onClick=
                        {(e) => {
@@ -13,13 +13,12 @@ const Headings = ({headings, activeId}) => (
                            document.querySelector(`#${heading.id}`).scrollIntoView({
                                behavior: "smooth"
                            });
-                       }
-                       }
+                       }}
                 >{heading.title}</a>
                 {heading.items.length > 0 && (
                     <ul>
                         {heading.items.map((child) => (
-                            <li key={child.id} className={heading.id===activeId ? "active":""}>
+                            <li key={child.id} className={child.id===activeId ? "active":""}>
                                 <a href={`#${child.id}`}
                                    onClick={(e) => {
                                        e.preventDefault();
@@ -38,12 +37,12 @@ const Headings = ({headings, activeId}) => (
 );
 
 function Index() {
-    const [activeID, setActiveID] = useState();
+    const [activeId, setActiveId] = useState();
     const {nestedHeadings} = useHeadingsData();
-    useIntersectionObserver(setActiveID);
+    useIntersectionObserver(setActiveId);
     return (
         <nav aria-label="Table of contents">
-            <Headings headings={nestedHeadings} activdID={activeID}/>
+            <Headings headings={nestedHeadings} activeId={activeId}/>
         </nav>
     );
 }

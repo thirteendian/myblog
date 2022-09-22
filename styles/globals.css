@@ -36,6 +36,10 @@ body {
     font-feature-settings: "liga" 1, "calt" 1;
 }
 
+button{
+    font-family: inherit;
+    background-color: grey;
+}
 a {
     color: firebrick;
     text-decoration: underline;
@@ -75,12 +79,12 @@ h2, h3 {
     scroll-margin-top: 16px;
 }
 
-@supports (-webkit-hyphens: none) {
-    h2, h3 {
-        padding-top: 16px;
-        margin-top: -16px;
-    }
-}
+/*@supports (-webkit-hyphens: none) {*/
+/*    h2, h3 {*/
+/*        padding-top: 16px;*/
+/*        margin-top: -16px;*/
+/*    }*/
+/*}*/
 
 
 
@@ -130,12 +134,7 @@ code {
 /*}*/
 
 
-.reactFlowChartStyle {
-    width: calc(100% - 150px);
-    height: 200px;
-    margin-left: auto;
-    margin-right: auto;
-}
+
 
 .text-updater-node {
     width: 40px;

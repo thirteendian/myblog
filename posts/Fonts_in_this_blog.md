@@ -4,6 +4,7 @@ subtitle: The modifications of Caslon style font Wyld
 date: '2022-09-16' 
 label: blog
 ---
+
 <p class="intro">
 Unfortunately, the trend of ligature was disappeared after early PC has been developed,
 because they tend to handle typefaces in the way of single character.
