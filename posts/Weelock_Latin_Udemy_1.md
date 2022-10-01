@@ -1,0 +1,42 @@
+---
+title: Latin 1
+subtitle: from wheelock chapters 1 to 15
+date: '2022-09-25'
+label: language/latin
+---
+
+<p class="intro">
+The process of learning latin is: Listen -> Forget -> Study -> Practice -> Perfect -> Review.
+Taking notes while listening lecture is a way for forgetting.
+Studying lecture by reviewing the Wheelock Chapter after a day of forgetting, and filling out the review sheet.
+Studying the vocabulary from etymology and filling out the review sheet.
+Practicing chapter sentence without translation, and reading out loudly.
+Practicing no more than 45 minutes.
+Reviewing the sheets and vocabulary, as well as all sentences.
+</p>
+
+## Conjugation Verbs
+
+Normally, the Pronouns is attached and reflected at the end of verb, thus no additional pronouns are needed.
+It's called STEM + ENDING. Pronouns can be used to emphasize. 
+
+### First Conjugation and Second Conjugation
+
+First Conjugation: present tense 
+
+
+| Pronouns  | 1st Endings -ā | 2rd Endings -ē |
+|-----------|----------------|----------------|
+| I         | -ō             | -ō             |
+| you       | -s             | -s             |
+| he/she/it | -t             | -t             |
+| we        | -mus           | -mus           |
+| your      | -tis           | -tis           |
+| they      | -nt            | -nt            |
+
+Other endings include:
+1. -te, plural imperative
+2. -re, infinitive
+
+> In dictionary, the search entry word will appear as "First-Person Singular/Infinitive Form".
+> For example, searching "laudant", remove -nt, search "lauda", then find "laudō". Laudant will be listed under Laudō.

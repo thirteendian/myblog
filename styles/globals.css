@@ -1,26 +1,32 @@
 @font-face {
     font-family: "yyld";
-    src: url("../styles/font/Yyld-Regular.woff");
+    src: url("../custom_fonts/Yyld-Regular.woff");
     font-style: normal;
 }
 
 @font-face {
     font-family: "yyld";
-    src: url("../styles/font/Yyld-Italich.woff");
+    src: url("../custom_fonts/Yyld-Italich.woff");
     font-style: italic;
 }
 
 @font-face {
     font-family: "goudy";
-    src: url("../styles/font/GoudyInitialen.ttf");
+    src: url("../custom_fonts/GoudyInitialen.ttf");
     font-style: normal;
 }
 
 
 @font-face {
     font-family: "caslon";
-    src: url("../styles/font/librecaslon.ttf");
+    src: url("../custom_fonts/librecaslon.ttf");
     font-style: italic;
+}
+
+@font-face {
+    font-family: "tsuku";
+    src: url("../custom_fonts/FOT-TsukuAOldMinPr6N-M.otf");
+    font-style: normal;
 }
 
 html,
@@ -28,7 +34,7 @@ body {
     padding: 0;
     margin: 0;
     background-color: #111111;
-    font-family: yyld, caslon, "Times New Roman", -apple-system, serif;
+    font-family: yyld, caslon, "Times New Roman", tsuku, -apple-system, serif;
     /*Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;*/
     font-variant-ligatures: common-ligatures historical-ligatures discretionary-ligatures contextual;
     -moz-font-feature-settings: "liga" 1, "calt" 1;
@@ -108,7 +114,10 @@ h2, h3 {
 th, td {
     border: 1px solid black;
     padding: 7px;
-
+}
+th{
+    font-weight: bolder;
+    font-style: italic;
 }
 
 table {
