@@ -1,6 +1,14 @@
 @font-face {
     font-family: "yyld";
     src: url("../custom_fonts/Yyld-Regular.woff");
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "yyld";
+    src: url("../custom_fonts/Yyld-Bold.woff");
+    font-weight: bold;
     font-style: normal;
 }
 
@@ -60,9 +68,9 @@ p {
     font-feature-settings: inherit;
     position: relative;
 }
-img{
-    width: 100%;
-}
+/*img{*/
+/*    !*width: 100%;*!*/
+/*}*/
 
 ol {
     font-size: x-large;
@@ -81,8 +89,18 @@ h2 {
 
 h3 {
     font-size: x-large;
+    font-weight: bold;
     font-variant-ligatures: common-ligatures historical-ligatures discretionary-ligatures contextual;
     color: firebrick;
+}
+
+h4 {
+    font-size: x-large;
+    font-weight: bold;
+    font-variant-ligatures: common-ligatures historical-ligatures discretionary-ligatures contextual;
+    color: black;
+    text-shadow: 1px 1px grey;
+
 }
 
 h2, h3 {
@@ -103,7 +121,6 @@ h2, h3 {
     font-size: 5.5rem;
     font-weight: normal;
     color: firebrick;
-
 
     float: left;
     line-height: 0.9;
@@ -174,3 +191,4 @@ code {
     -webkit-filter: invert(1);
     filter: invert(1);
 }
+

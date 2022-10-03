@@ -73,10 +73,13 @@ blockquote a{
 
 blockquote p{
     font-size: 20px;
+    font-weight: bolder;
     font-style: normal;
+    color: black;
+    text-shadow: 1px 1px grey;
 }
-blockquote a:hover{
-    color: #666;
+blockquote:hover{
+    box-shadow: 2px 2px 15px #868686;
 }
 
 blockquote em{
@@ -114,4 +117,8 @@ nav a:hover{
     font-weight: bolder;
     color: white;
     background-color: firebrick;
+}
+
+.fullWidthImage{
+    width: 100%;
 }

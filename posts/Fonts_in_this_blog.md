@@ -4,19 +4,20 @@ subtitle: The modifications of Caslon style font Wyld
 date: '2022-09-16' 
 label: blog
 ---
-
 <p class="intro">
-Unfortunately, the trend of ligature was disappeared after early PC has been developed,
-because they tend to handle typefaces in the way of single character.
-After TeX Program leaded a new trend of ligature, it indirectly caused the development of OpenType.
-This blog is managed to use Wyld® font by David Manthey, designed to match the font used in "The Practical Surveyor",
-which is open-source and belongs to series of <em>Caslon</em> font from 17th Century.
-However, this TrueType font need to be firstly converted into new standard OpenType,
-and of course plenty of re-encodings and adjustments are required. 
-This article described my process of modifying the ligature font on this website.
+    Unfortunately, the trend of ligature was disappeared after early PC has been developed,
+    because they tend to handle typefaces in the way of single character.
+    After TeX Program leaded a new trend of ligature, it indirectly caused the development of OpenType.
+    This blog is managed to use Wyld® font by David Manthey, designed to match the font used in "The Practical Surveyor",
+    which is open-source and belongs to series of Caslon font from 17th Century.
+    However, this TrueType font need to be firstly converted into new standard OpenType,
+    and of course plenty of re-encodings and adjustments are required.
+    This article described my process of modifying the ligature font on this website.
 </p>
 
-## Four Types of Ligature in OpenType and CSS {#a1}
+
+
+## Four Types of Ligature in OpenType and CSS
 
 There are normally four types of ligature:
 *common*, *discretionary*, *historical*, *contextual*. CSS by `font-variant-ligatures`.
@@ -34,9 +35,9 @@ The *contextual* ligatures referred to the adjustment of single characters with 
 font, "on", "ose" and many others may be adjusted to connect to each other. The contextual alternates should be designed
 to properly connect. OpenType value is `calt`, CSS mode is `contextual` and default activated.
 
-## Ligature Rules {#a2}
+## Ligature Rules
 
-### Long and Short s {#a2-1}
+### Long and Short s
 
 According to Boston
 1775's ["The Long List of Rules for the Long s"](https://boston1775.blogspot.com/2013/10/the-long-list-of-rules-for-long-s.html)
@@ -69,7 +70,7 @@ in [BabelStrone Blog's The Rules for Long S](https://www.babelstone.co.uk/Blog/2
 12. Long s is maintained in abbreviations such as ſ. for ſubſtantive, and Geneſ. for Geneſis (this rule means that it is
     practically impossible to implement fully correct automatic contextual substitution of long s at the font level)
 
-### R Rotunda and Rum Rounda {#a2-2}
+### R Rotunda and Rum Rounda
 
 R Rotunda/Rum Rounda (`Ꝛ` `ꝛ`),
 in unicode "UniA75A" and "UniA75B", 
@@ -82,14 +83,14 @@ we sum up the brief rules as followings:
 3. R rotunda "may" add on y
 4. Apostrophe will not break R Rotunda.
 
-## Wyld Font {#b1}
+## Wyld Font
 
 The font information can be checked
 at ["18 Century Ligatures and Fonts"](https://www.orbitals.com/self/ligature/ligature.pdf). The zip folder provided
 contains a `.dot` file with early ages embedded VBA Macro, and typically David Manthey's solution about replacing
 ligature letter to be unusual letter.
 
-### Extract the VBA Macro in dot file {#b1-1}
+### Extract the VBA Macro in dot file
 
 It is rare to find and VB sources and MS Office before 2003, I considered the tools to extract VBA directly from dot
 file. Olevba is an open-source Python shell, and it can be
@@ -144,7 +145,7 @@ following table showed all replacements he defined, from left to right, in order
 
 > `Ç>` might means letter `Ç` at the end of word, and `_s>` means letter `s` at the beginning of word.
 
-### David's Special Replacement {#b1-2}
+### David's Special Replacement
 
 Specific replacement happened to fit rules of Long and Short s:
 
@@ -156,7 +157,7 @@ Specific replacement happened to fit rules of Long and Short s:
 
 David didn't do any replacement about s in front of hyphen (Rule 7), as well as when this hyphen is omit (Rule 8)
 
-### David's Problematic Solution {#b1-3}
+### David's Problematic Solution
 
 However, we noticed that his replacement will cause special character such like `À` or `Ç` not be able to be used and
 searched anymore. Actually, according to Tex
@@ -164,19 +165,19 @@ StackExchange [Question 290261](https://tex.stackexchange.com/questions/290261),
 fit current Latex and CSS rules, the `.ttf` file need to be converted to `.otf`, the em size need to be adjusted, the
 ligature configuration in `otf` file(especially in his italic version `wyldi.ttf`).
 
-## Modifications based on Wyld {#b2-1}
+## Modifications based on Wyld
 
 The followings are the process of my modification of original wyld, with new standard OTF script and conditional
 ligature, I will name this font to be Yyld, for my future usage, and usage in this blog.
 
-### Convert TTF to OTF {#b2-1}
+### Convert TTF to OTF
 Before Generating new `otf` font in *FontForge*, a few adjustments are required.
 
 Goto `Element`->`Font Info` -> `General`, adjust `Em Size` to be less than 1000 value. Then goto `Element`->`Font Info`
 -> `OS/2`, adjust `OS/2 Version` to be larger than 1 value(can be auto). Finally, generate otf font by `File`
 ->`Generate Fonts`, under new pop up window, choose `OpenType(CFF)`, while under suitable folder click `Generate`.
 
-### Add Common Ligature {#b2-3}
+### Add Common Ligature
 
 The Ligature Substitution replace multiple glyph with one single glyph.
 
@@ -187,7 +188,7 @@ of `ffi`, I may name it to be `f_f_i`.
 
 A Ligature Substitution LookupTable must be created for otf to find suitable ligature replacement. At `Element`
 ->`Font Info`->`Lookups`, click `Add Lookup` on the right side, and choose `Ligature Substitution` at `Type:`. Then
-click the "little button" next to <New> to add a new line, triggered a drop-down list, and
+click the "little button" next to `<New>` to add a new line, triggered a drop-down list, and
 choose `liga Standard Ligatures`. We can also type the value `liga` mentions above in `Feature` and it's basically the
 same thing, similarly, if it's an historic ligature, choose `hlig Historic Ligatures`. Finally,
 tickled `Store ligature data in AFM files`.
@@ -216,7 +217,7 @@ necessary to put `ffi/ffl` matching before `ff`
 
 Now we added f and long s related ligatures, and they are under `liga` LookupTable.
 
-### Add Long S Contextual Ligature {#b2-4}
+### Add Long S Contextual Ligature
 
 Note that until now, only f related normal ligatures were working without any conditional cases, as described above.
 In David's solution, he firstly converted all s to be ſ. However, we won't consider this reverse way, because that will
@@ -337,7 +338,7 @@ The fourth subTable rule in `calt` s to ſ LookupTable is
 At the end of the table, just as the previous f-related ligature,
 I created the Ligature Substitution Table to make all `ſ` related
 ligatures.
-### Add Long S Contextual Ligature of Compound sss  {#b2-5}
+### Add Long S Contextual Ligature of Compound sss
 I created a specific sss symbols with `ſſs` ligatured together.
 This ligature is at the least rank, if s is not ligatured with any of others,
 then this sss ligature is applied. This will make it possible to distinguish compound sss to fit (Rule 8).
@@ -347,7 +348,7 @@ with rules: If all three `ſ` is appeared together, then convert the last one to
 Also a third `liga` LookupTable is applied behind the previous ligature LookupTable,
 to apply `ſſs` ligature with least priority.
 
-### Adjust Italic Font  {#b2-50}
+### Adjust Italic Font
 
 Beside of regular type, there're also a version of italic Wyld font provided as name `Wyldi.ttf`.
 I applied the similar Ligature rules as previously designed. To generate the same font with different style name,
@@ -355,17 +356,17 @@ we need to change the font name to be the same, but different style name. Goto `
 change `Fontname` to be "Yyld-Regular" or "Yyld-Italic", correspondingly to the `Weight` regular and italic.
 but maintain the `Family Name` to be the same.
 
-### Test Without Exporting  {#b2-6}
+### Test Without Exporting
 To test the result, one can use `Metrics`->`New Metrics Window` to type and
 test ligature.
-### Clockwise and CounterClockwise  {#b2-7}
+### Clockwise and CounterClockwise
 Some circle part should be white background but black filled, select the circle, `Element`->`Clockwise` will solve this problem.
 
-### No Contextual Rule supported on iPhone {#b2-8}
+### No Contextual Rule supported on iPhone
 
 Unfortunately, the contextual substitution on iPhone is not supported.
 
-### Spacing and Kerning {#b2-9}
+### Spacing and Kerning
 Several rules should be applied to make font looks better, for spacing, not always the same side bearing
 means good-looking. In this font, we adjust all letter to be left closed to 0, 
 thus the only modification will be "how they close to 0" and their right side bearing.
@@ -394,7 +395,7 @@ window, after clicking `ok`, a new dialogue will pop up.
    after setting all adjustable pair, one may try to finally adjust individual one by one.
 2. Adjust all others
 
-### Final Grain {#b2-10}
+### Final Grain
 
 More historical rules can be checked at ["The Printer's Grammar"](https://www.google.com/books/edition/The_Printer_s_Grammar/jjE5AAAAMAAJ?hl=en&gbpv=0)
 written in 1787 by John Smith. However, we will combine the modern rule together in this font for better web display,

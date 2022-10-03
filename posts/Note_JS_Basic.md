@@ -93,7 +93,9 @@ class A
 Note that the following map when say function(object) constructor, that means use it's function(object)
 .prototype.constructor!
 
-![](/figure/Note_JS_BASIC_img1.webp)
+<div style="text-align: center;">
+<img style="width: 80%; position: center" src="/figure/Note_JS_BASIC_img1.webp" loading="lazy">
+</div>
 
 ## `this` in JS {#jsbasic-2}
 

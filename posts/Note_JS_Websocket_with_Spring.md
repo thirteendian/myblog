@@ -77,7 +77,8 @@ Apache's `HttpRequest`.
 
 A Whole combination of them is `ServletServerHttpRequest`, which is server-side, contains both
 JavaEE's `ServletRequest` `HttpInputMessage` and Apache's `HttpRequest`.
-![](/figure/Note_JS_WEBSOCKET_WITH_SPRING_img1.png)
+
+<img src="/figure/Note_JS_WEBSOCKET_WITH_SPRING_img1.png" class="fullWidthImage" loading="lazy"/>
 
 ## Springboot Basic Websocket Configuration {#SpringbootBasicWebsocketConfiguration}
 
