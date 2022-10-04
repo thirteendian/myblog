@@ -5,7 +5,7 @@ date: '2022-08-08'
 label: js
 ---
 
-## `__proto__` & `prototype` & `constructor` {#__proto__prototypeconstructor}
+## `__proto__` & `prototype` & `constructor`
 
 For analysis each question, three point:
 
@@ -39,7 +39,7 @@ function `Parent` inherited from object `Function.prototype`, and `Parent` has r
 point to object `Function.prototype`. Also, according to the previous analogy, all function's prototype is inherited
 from `Object.prototype`, so does `Function.prototype`.
 
-```js
+```jsx
 var Parent = function () {
 }
 //Parent()'s constructor function is Function.prototype.constructor()
@@ -64,7 +64,7 @@ suppose object `p1` construct using constructor `Parent()`, in another word, obj
 object `Parent.prototype`.
 `p1` has reference `p1.__proto__`to parent object `Parent.prototype`.
 
-```js
+```jsx
 var p1 = new Parent();
 // p1's constructor is Parent.prototype.constructor()
 // p1 is inherited from Parent.prototype
@@ -74,7 +74,7 @@ var p1 = new Parent();
 If one want to put value not in prototype but in it's own instantiation, a single assignment to an variable is
 necessary:
 
-```js
+```jsx
 class A
 
 ()
@@ -87,17 +87,14 @@ class A
 //but we cannot find a=1 in instantiation.__proto__
 //(or A.prototype)
 }
-
 ```
 
 Note that the following map when say function(object) constructor, that means use it's function(object)
 .prototype.constructor!
 
-<div style="text-align: center;">
-<img style="width: 80%; position: center" src="/figure/Note_JS_BASIC_img1.webp" loading="lazy">
-</div>
+<img src="/figure/Note_JS_BASIC_img1.webp" loading="lazy"/>
 
-## `this` in JS {#jsbasic-2}
+## `this` in JS
 
 To justify `this` referece.
 
@@ -201,7 +198,7 @@ in `object.prototype` as well. Thus for expression "this.example2 = this.example
 fetching this(`object.prototype`).example1 method from `object.prototype`, the left side is construct this(`object`) as
 a new object with new method `example2()`**
 
-## Closure {#jsbasic-3}
+## Closure
 
 `var` used to create function scope variable inside a function, if one does not use `var` to create variable, actually
 an Global scope variable is created.

@@ -6,7 +6,7 @@ label: js
 ---
 
 
-## Communication Mode {#CommunicationMode}
+## Communication Mode
 
 A very essential part in designing webgame is to keep information synchronized between both "Server and Client" and "
 Client and Client". For game that requires strong dynamic time control will choose **frame sync**, while turn-based game
@@ -25,14 +25,14 @@ will prefer **state sync**.
 
 In this game, we choose the approach of State Sync since the player will only do action one by one in their turn.
 
-### Broadcast Way {#BroadcastWay}
+### Broadcast Way
 
 - Unicast: point to point
 - Broadcast: everyone
 - Multicast: point to Groups
 
 
-## Game Server Design {#GameServerDesign}
+## Game Server Design
 
 There are normally two ways to design game server:
 
@@ -50,14 +50,14 @@ There are two ways of connections between server and clients:
 Obviously, web page use non-persistent connection, while `WebSocket` applications use **persistent connection** in a
 game session. In multiplayer's game server, after user entering the game, we must continuously manage each player.
 
-### Create Game {#CreateGame}
+### Create Game
 
 Once client post create game, we'd create a unique GameID, add this game into database. If client join his created game,
 then add this unique GameID to his session.
 
-### Join Game {#JoinGame}
+### Join Game
 
-### In Game {#InGame}
+### In Game
 
 A playerDataDTO must be provided to transfer player's data through json.
 
@@ -75,5 +75,5 @@ On Client Side:
 3. provide update methods, when any update happened on client side, send current state to Server.
 4. provide OnClose method, when server side is disconnected
 
-## Game Client Design {#GameClientDesign}
+## Game Client Design
 

@@ -5,14 +5,14 @@ date: '2022-08-09'
 label: js
 ---
 
-<p class="intro">
+<Intro>
 HTTP only allows client to send requirement, server only waiting for response. To achieve dual communication, 
 Websocket protocal must be introduced. Websocket protocol was defined by RFC as a <em>full duplex</em> communication channels
 at layer 7 by HTML5. There are three ways of achieving websocket communication: through websocket, through socketjs, 
 and STOMP.
-</p>
+</Intro>
 
-## Websocket {#Websocket}
+## Websocket
 
 To debug websocket request, developerTools use network and filter WS.
 
@@ -82,7 +82,7 @@ socket.onclose = event => {
 // https://www.rfc-editor.org/rfc/rfc6455.html#section-7.4.1
 ```
 
-## SocketJS {#SocketJS}
+## SocketJS
 
 Old version of browser might not support HTML5 newly introduced method to create WebSocket object. Thus **SocketJS**
 provided a "fallback" version library to create object that is similar to Websocket object.
@@ -104,7 +104,7 @@ var sockjs = new SockJS(url, _reserved, options);
 
 The others are similar to Websocket
 
-## STOMP {#STOMP}
+## STOMP
 
 Specifically, while using Socket to transfer text
 (STOMP: Simple/Streaming text-orientated messaging protocol), a protocol was provided, used to communicate with STOMP

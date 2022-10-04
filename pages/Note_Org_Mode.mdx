@@ -4,29 +4,12 @@ date: '2022-09-05'
 label: emacs
 ---
 
-[//]: # (# Table of Contents)
 
-[//]: # ()
-[//]: # (1.  [Title]&#40;#org6b6bf22&#41;)
-
-[//]: # (2.  [Rich Text]&#40;#org924b17d&#41;)
-
-[//]: # (3.  [Code Block]&#40;#org83a4e74&#41;)
-
-[//]: # (    1.  [Init Setup]&#40;#org8b43609&#41;)
-
-[//]: # (    2.  [Block Input]&#40;#org252e4b1&#41;)
-
-[//]: # (    3.  [Latex setup]&#40;#orga2f667c&#41;)
-
-[//]: # (4.  [Export]&#40;#org6d79c98&#41;)
-
-[//]: # (5.  [Draw Ditaa image]&#40;#orgc5ce1f0&#41;)
-
-## Title {#id-title}
+## Title 
 
 The first paragraph is not indented.
-<sup><a id="fnr.1" class="footref" href="#fn.1" role="doc-backlink">1</a></sup>
+
+<sup><a id="fnr.1" class="footref" href="pages/Note_Org_Mode#fn.1" role="doc-backlink">1</a></sup>
 
 Like markdown, org-mode use one or more `*[space]` at the beginning of paragraph as tree of title.
 
@@ -47,7 +30,7 @@ Parent level `C-c C-u`;
 
 <a id="org924b17d"></a>
 
-## Rich Text {#id-RichText}
+## Rich Text
 
 Like markdown '`**`' is for **bold**; '`/italic/`' is for *italic*; '`_underlined_`' is for <span class="underline">underline</span>; `=verbatim=` is for `verbatim`; `~code~` is for `code`; `+strikethrough+` is for <del>strikethrough</del>.
 
@@ -56,12 +39,12 @@ The footnote is marked as `[fn::<body>]` or seperate line `[fn:A1] [fn:A1]<body>
 
 <a id="org83a4e74"></a>
 
-## Code Block {#id-CodeBlock}
+## Code Block
 
 
 <a id="org8b43609"></a>
 
-### Init Setup {#id-InitSetUp}
+### Init Setup
 
 Before inserting code blocks, emacs should enable the corresponding language while loading emacs
 ```elisp
@@ -78,7 +61,7 @@ to enable it, add:
     ;"org-modules" is defined in org.el
 ```
 The short key is `<s + TAB`
-<sup><a id="fnr.4" class="footref" href="#fn.4" role="doc-backlink">4</a></sup>
+<sup><a id="fnr.4" class="footref" href="pages/Note_Org_Mode#fn.4" role="doc-backlink">4</a></sup>
 
 To add more short key for specific languages<sup><a id="fnr.5" class="footref" href="#fn.5" role="doc-backlink">5</a></sup>, add:
 ```elisp
@@ -99,7 +82,7 @@ Now in export menu we can find mark down support.
 
 <a id="org252e4b1"></a>
 
-### Block Input {#id-blockInput}
+### Block Input
 
 Like latex, the code blocks source code looks like:
 
@@ -140,7 +123,7 @@ For inline code `~code~` is for `code`;
 
 <a id="orga2f667c"></a>
 
-### Latex setup {#id-LatexSetup}
+### Latex setup
 
 For exporting with package `{mint}` in latex, as refer to CTAN, mint requires python and Pygments are installed.
 
@@ -169,7 +152,7 @@ The correponding mint style configuration in emacs is :
 ```
 The "options" is latex mint environment option,
 and will appear in front of each mint environment in tex.
-<sup><a id="fnr.6" class="footref" href="#fn.6" role="doc-backlink">6</a></sup>
+<sup><a id="fnr.6" class="footref" href="pages/Note_Org_Mode#fn.6" role="doc-backlink">6</a></sup>
 
 In generating latex file, mint also need to be included in latex header:
 
@@ -177,14 +160,14 @@ In generating latex file, mint also need to be included in latex header:
     #+latex_header: \usepackage{minted}
 
 For changing mint Pygments font color style
-<sup><a id="fnr.7" class="footref" href="#fn.7" role="doc-backlink">7</a></sup>, in latex header
+<sup><a id="fnr.7" class="footref" href="pages/Note_Org_Mode#fn.7" role="doc-backlink">7</a></sup>, in latex header
 
     #+latex_header: \usemintedstyle{dracula}
 
 
 <a id="org6d79c98"></a>
 
-## Export {#id-export}
+## Export
 
 Insert export default setting: C-c C-e #, input "default";
 Insert export latex settting: C-c C-e #, input "latex".
@@ -199,7 +182,7 @@ o for export tex + pdf and open
 
 <a id="orgc5ce1f0"></a>
 
-## Draw Ditaa image {#id-ditaa image}
+## Draw Ditaa image
 
 Ditaa is no longer distributed with emacs.
 
@@ -221,18 +204,18 @@ and set the :
 ![img](figure/cycle2.png)
 
 
-# Footnotes {#id-footnotes}
+# Footnotes
 
-<sup><a id="fn.1" href="#fnr.1">1</a></sup> There is no need to indicate the first paragraph after title because obviously it's the start of the first paragraph.
+<sup><a id="fn.1" href="pages/Note_Org_Mode#fnr.1">1</a></sup> There is no need to indicate the first paragraph after title because obviously it's the start of the first paragraph.
 
-<sup><a id="fn.2" href="#fnr.2">2</a></sup> Cycle means "folded-subtree–show all" or "overview–contents–show all"
+<sup><a id="fn.2" href="pages/Note_Org_Mode#fnr.2">2</a></sup> Cycle means "folded-subtree–show all" or "overview–contents–show all"
 
-<sup><a id="fn.3" href="#fnr.3">3</a></sup> Note that there are two columns after inline footnote and two newline after the seperate footnote
+<sup><a id="fn.3" href="pages/Note_Org_Mode#fnr.3">3</a></sup> Note that there are two columns after inline footnote and two newline after the seperate footnote
 
-<sup><a id="fn.4" href="#fnr.4">4</a></sup> The 's' here is only for SRC environment, to generate other default environment, refer to `C-h v org-structure-template-alist RET`
+<sup><a id="fn.4" href="pages/Note_Org_Mode#fnr.4">4</a></sup> The 's' here is only for SRC environment, to generate other default environment, refer to `C-h v org-structure-template-alist RET`
 
-<sup><a id="fn.5" href="#fnr.5">5</a></sup> The supported language list can be checked at [Babel: Languages](https://orgmode.org/worg/org-contrib/babel/languages/index.html)
+<sup><a id="fn.5" href="pages/Note_Org_Mode#fnr.5">5</a></sup> The supported language list can be checked at [Babel: Languages](https://orgmode.org/worg/org-contrib/babel/languages/index.html)
 
-<sup><a id="fn.6" href="#fnr.6">6</a></sup> The detail of minted environment options can be referred to CTAN.
+<sup><a id="fn.6" href="pages/Note_Org_Mode#fnr.6">6</a></sup> The detail of minted environment options can be referred to CTAN.
 
-<sup><a id="fn.7" href="#fnr.7">7</a></sup> More styles can be refered  to [Pygments Demo](https://pygments.org/demo/)
+<sup><a id="fn.7" href="pages/Note_Org_Mode#fnr.7">7</a></sup> More styles can be refered  to [Pygments Demo](https://pygments.org/demo/)

@@ -4,7 +4,7 @@ date: '2022-08-10'
 label: js/react
 ---
 
-## Spring Cross Origin {#SpringCrossOrigin}
+## Spring Cross Origin
 
 [React.js and Spring Data REST](https://spring.io/guides/tutorials/react-and-spring-data-rest/)
 We want frontend and backend to be seperated, and communicate with JSON.
@@ -22,7 +22,7 @@ And add allow cross origin annotation in front of controller
 @GetMapping(...)
         ...
 ```
-## Essential library {#EssentialLibrary}
+## Essential library
 
 babel.min.js has two functionality:
 
@@ -72,7 +72,7 @@ render()
     )
 ```
 
-## Three essential properties {#Threeessentialproperties}
+## Three essential properties
 
 For refs, It's not recommended to use too much. The input parameter is the current element node it self, there are three ways:
 ```jsx
@@ -132,7 +132,7 @@ reactDOM.render(<example/>, document.getElementById('test'))
 If the event is on the element that call ref itself, the ref is not necessary to define, since
 render will return `event` to the same name function as input, and we can get the element by`event.target`
 
-## Event {#Event}
+## Event
 
 The Event process
 ...
@@ -140,7 +140,7 @@ The Event process
 Event is rewrite by React(for example, onclick is "onClick"" in react),
 and give the event to the very outsider element.
 
-## Diff algorithm {#Diffalgorithm}
+## Diff algorithm
 
 Virtual DOM use label as a comparable minimum element. And compare label from outside to inside.
 
@@ -153,7 +153,7 @@ For CORS problem, is able to send, but not possible to receive
 The proxy is running on the proxy server is the same port as client,
 but do not have ajax wall.
 
-## Fetch and sync await {#Fetchandsyncawait}
+## Fetch and sync await
 Separation of Concerns, Fetch and XHR(HMLHttpRequest):
 XHR and it's related method(jQuary & Axios) is not suitable for SoC.
 Fetch will seperate XHR connect and request data into few steps. May combine
@@ -173,7 +173,7 @@ async ()=>{
 }
 ```
 
-## Router {#Router}
+## Router
 
 SPA single page application through router.
 SPA urls(actually called path, because do not have actual html page url)
@@ -183,4 +183,4 @@ now corresponding to multiple Component(or Functions).
 
 
 
-## Spring Authentication(JWT) {#SpringAuthenticationJWT}
+## Spring Authentication(JWT)

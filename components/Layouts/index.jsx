@@ -14,6 +14,7 @@ const NavigationBar = styled.div`
   padding-left: 10px;
   position: sticky;
   position: -webkit-sticky;
+  top: 0;
   float: top;
   background-color: grey;
   width: 100%;
@@ -43,6 +44,10 @@ const NavigationBack = styled.nav`
   }
 `
 
+const Header = styled.header`
+height: 100%;
+`
+
 const Index = ({children, home}) => {
     return (
         <LayoutContainer>
@@ -54,8 +59,7 @@ const Index = ({children, home}) => {
                 />
                 <title>Yuxuan Blog</title>
             </Head>
-            <header>
-                <>
+            <Header>
                     {
                         home ? (
                                 <>
@@ -72,13 +76,10 @@ const Index = ({children, home}) => {
                                     <NavigationBack>
                                         <Link href="/blog"><a>Back to Home</a></Link>
                                     </NavigationBack>
-
-
                                 </NavigationBar>
                             )
                     }
-                </>
-            </header>
+            </Header>
             {children}
         </LayoutContainer>
     );

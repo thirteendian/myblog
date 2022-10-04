@@ -5,14 +5,14 @@ date: '2022-08-09'
 label: js/spring
 ---
 
-<p class="intro">
+<Intro>
 This session talked about how to use Websocket over SpringBoot app.
 Springboot was extended from SpringMVC, which developed based on JavaEE's basic servlet.
 Under this topic, we will discussed the JavaEE's servlet, Springboot's Message Broker and Endpoint,Session,
 handshake and inteceptor.
-</p>
+</Intro>
 
-## Websocket With Java Springboot {#Websocket_With_Java_Springboot}
+## Websocket With Java Springboot
 
 Websocket has two Functionalities that can be use:
 
@@ -31,7 +31,7 @@ to provide the method of Endpoint and broker configuration, as well as Intercept
 * `HandshakeInterceptor` and `ChannelInterceptor` define before and after handshake interceptor
 * `EventListener` after handshake on four events.
 
-## Message, Server, Servlet, Request, Response {#Message_Server_Servlet_Request_Response}
+## Message, Server, Servlet, Request, Response
 
 Historically, there're two parallel package to hold HTTP Request/Response:
 
@@ -41,36 +41,36 @@ Historically, there're two parallel package to hold HTTP Request/Response:
 The JavaEE Servlets contains `HttpServletRequest` and `HttpServletResponse`, comparably Apache has `HttpRequest`
 and `HttpResponse`.
 
-### JavaEE Servlets {#JavaEEServlets}
+### JavaEE Servlets
 
-_Servlets_ run in a servlet container, which the well known one might be **Tomcat**. It is a Java object to handle Http
+*Servlets* run in a servlet container, which the well known one might be **Tomcat**. It is a Java object to handle Http
 Request.
 
 `HttpServletRequest` and `HttpServletResponse` are server-side class, extended from `ServletRequest`
 and `ServletResponse` respectively. When implementing servlets, one must use JavaEE's rather than
-Apache's.  `ServletRequest` and `ServletResponse` provide three part:
-_HTTP Servlet_, _Body_ and _Headers_.
+Apache's.  `ServletRequest` and `ServletResponse` provide three part: *HTTP Servlet*, *Body* and *Headers*.
 
-> `HttpServletRequest`<--(extends)--`ServletRequest`
+> `HttpServletRequest` =(extends)= `ServletRequest`
 
-> `HttpServletResponse`<--(extends)--`ServletResponse`
+> `HttpServletResponse` =(extends)= `ServletResponse`
 
-Similary, two other things `HttpInputMessage` and `HttpOutputMessage` only has _Body_ and _Headers_,
+Similary, two other things `HttpInputMessage` and `HttpOutputMessage` only has *Body* and *Headers*,
 while `HttpInputMessage` need extra **METHOD** in it's header.
 `HttpMessage` defines the commonly used getHeader() method to get HTTP header except METHOD, and the Body is got
 respectively by their own methods, as shown below:
-> `HttpMessage`<---`HttpHeaders getHeader()`<---`MultiValueMap`<---`Map`
 
-> `HttpInputMessage`<--(extends)--`HttpMessage`
+> `HttpMessage`--`HttpHeaders getHeader()`-- `MultiValueMap` - `Map`
 
-> `HttpOutputMessage`<--(extends)--`HttpMessage`
+> `HttpInputMessage`-- (extends)-- `HttpMessage`
 
-### Apache Http Components Library {#ApacheHttpComponentsLibrary}
+> `HttpOutputMessage`-- (extends)-- `HttpMessage`
+
+### Apache Http Components Library
 
 For the request header,`HttpRequest`need extra **METHOD**
 thus `getHeader()` extends from `HttpMessage` as usual, while `getMethod()` defined by itself.
 
-> `HttpRequest`<--(extends)--`HttpMessage`
+> `HttpRequest` =(extends)= `HttpMessage`
 
 A Server side representation is `ServerHttpRequest` and based on both JavaEE's `HttpInputMessage` and
 Apache's `HttpRequest`.
@@ -80,9 +80,9 @@ JavaEE's `ServletRequest` `HttpInputMessage` and Apache's `HttpRequest`.
 
 <img src="/figure/Note_JS_WEBSOCKET_WITH_SPRING_img1.png" class="fullWidthImage" loading="lazy"/>
 
-## Springboot Basic Websocket Configuration {#SpringbootBasicWebsocketConfiguration}
+## Springboot Basic Websocket Configuration
 
-### configureMessageBroker {#configureMessageBroker}
+### configureMessageBroker
 
 To config Broker prefix
 
@@ -156,7 +156,7 @@ stompClient.subscribe('/url/' + my_id,
 SimpMessagingTemplate.convertAndSend("/url/"+myid,content);
 ```
 
-### registerStompEndpoints {#registerStompEndpoints}
+### registerStompEndpoints
 
 Endpoint was used to create STOMP websocket. For example, we can create STOMP over SocketJS as below:
 
@@ -172,7 +172,7 @@ var socket = new SockJS('/endpoint_url');
 stompClient = Stomp.over(socket);
 ```
 
-## Springboot EventListener and HeadAccessor {#EventListenerandHeadAccessor}
+## Springboot EventListener and HeadAccessor
 
 Springboot has `ApplicationListener<>` to provide the method of listen on 4 Websocket events. For example:
 
@@ -195,18 +195,17 @@ StompHeaderAccessor headerAccessor=StompHeaderAccessor.wrap(sessionConnectEvent.
 //headerAccessor has information of headers
 ```
 
-## Springboot Scheduling {#Scheduling}
-
+## Springboot Scheduling
 To regularly run we need to add annotation `@EnableScheduling`in front of Spring main function.
 
 Note that If method was scheduled, it should not have any parameter.
 
-## Springboot Interceptor {#Interceptor}
+## Springboot Interceptor
 
 After adding interceptor on Websocket, the message now is passing through the way as:
 > `message`--->`HandshakeInterceptor`--->`ChannelInterceptor`
 
-### Channel Interceptor {#ChannelInterceptor}
+### Channel Interceptor
 
 Spring use `Message` to represent information with header and payload, and it was sent through `MessageChannel`
 . `ChannelInterceptor` provides a way to capture information before and after `Message` is sending through channel, and
@@ -229,7 +228,7 @@ public void configureClientOutboundChannel(ChannelRegistration registration){
         }
 ```
 
-### Session {#Session}
+### Session
 
 Http Session, is defined as a series of related browser requests that come from the same client during a certain time
 period. Session tracking ties together a series of browser requests—think of these requests as pages—that may have some
@@ -263,7 +262,7 @@ public sessionController(HttpSession httpsession){
         }
 ```
 
-### Handshake Interceptor {#HandshakeInterceptor}
+### Handshake Interceptor
 
 By adding HandshakeInterceptor,one can prevent user's entering from unauthorized condition, note that
 HandshakeInterceptor can be registered directly with Endpoint.

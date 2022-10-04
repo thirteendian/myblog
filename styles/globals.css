@@ -44,7 +44,7 @@ body {
     background-color: #111111;
     font-family: yyld, caslon, "Times New Roman", tsuku, -apple-system, serif;
     /*Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;*/
-    font-variant-ligatures: common-ligatures historical-ligatures discretionary-ligatures contextual;
+    font-variant-ligatures: common-ligatures historical-ligatures discretionary-ligatures ;
     -moz-font-feature-settings: "liga" 1, "calt" 1;
     -webkit-font-feature-settings: "liga" 1, "calt" 1;
     font-feature-settings: "liga" 1, "calt" 1;
@@ -67,6 +67,7 @@ p {
     font-size: x-large;
     font-feature-settings: inherit;
     position: relative;
+    word-break: break-word;
 }
 /*img{*/
 /*    !*width: 100%;*!*/
@@ -81,7 +82,7 @@ ol {
 h2 {
     font-size: x-large;
     font-weight: bold;
-    font-variant-ligatures: common-ligatures historical-ligatures discretionary-ligatures contextual;
+    font-variant-ligatures: common-ligatures historical-ligatures discretionary-ligatures ;
     background-color: firebrick;
     color: white;
 
@@ -90,14 +91,14 @@ h2 {
 h3 {
     font-size: x-large;
     font-weight: bold;
-    font-variant-ligatures: common-ligatures historical-ligatures discretionary-ligatures contextual;
+    font-variant-ligatures: common-ligatures historical-ligatures discretionary-ligatures ;
     color: firebrick;
 }
 
 h4 {
     font-size: x-large;
     font-weight: bold;
-    font-variant-ligatures: common-ligatures historical-ligatures discretionary-ligatures contextual;
+    font-variant-ligatures: common-ligatures historical-ligatures discretionary-ligatures ;
     color: black;
     text-shadow: 1px 1px grey;
 
@@ -113,20 +114,6 @@ h2, h3 {
 /*        margin-top: -16px;*/
 /*    }*/
 /*}*/
-
-
-
-.intro::first-letter {
-    font-family: goudy, serif;
-    font-size: 5.5rem;
-    font-weight: normal;
-    color: firebrick;
-
-    float: left;
-    line-height: 0.9;
-    margin-right: 0.01em;
-}
-
 
 th, td {
     border: 1px solid black;
